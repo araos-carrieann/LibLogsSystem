@@ -82,7 +82,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
 
         btnAddProgram.setBackground(new java.awt.Color(204, 255, 204));
         btnAddProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
+        btnAddProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_icon.png"))); // NOI18N
         btnAddProgram.setText("ADD");
         btnAddProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +94,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
 
         btnDeleteProgram.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
+        btnDeleteProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
         btnDeleteProgram.setText("DELETE");
         btnDeleteProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

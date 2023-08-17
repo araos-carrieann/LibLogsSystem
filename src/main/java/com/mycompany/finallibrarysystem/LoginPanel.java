@@ -37,6 +37,7 @@ public class LoginPanel extends javax.swing.JPanel {
         lblWarningMsg = new javax.swing.JLabel();
         btnGoToSignUp = new javax.swing.JButton();
         lblDoYouHaveanAccount = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -86,6 +87,10 @@ public class LoginPanel extends javax.swing.JPanel {
 
         lblDoYouHaveanAccount.setText("Don't have an account?");
         panelGradient1.add(lblDoYouHaveanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, 20));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id_iconBig.png"))); // NOI18N
+        panelGradient1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 504));
     }// </editor-fold>//GEN-END:initComponents
@@ -169,6 +174,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnGoToSignUp;
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox<String> comboBoxReason;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDoYouHaveanAccount;
     private javax.swing.JLabel lblWarningMsg;
     private com.mycompany.finallibrarysystem.Design.PanelGradient panelGradient1;

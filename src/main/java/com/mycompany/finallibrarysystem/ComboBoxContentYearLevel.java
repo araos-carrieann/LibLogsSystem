@@ -77,7 +77,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
 
         btnAddYrLvl.setBackground(new java.awt.Color(204, 255, 204));
         btnAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-add-20.png"))); // NOI18N
+        btnAddYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_icon.png"))); // NOI18N
         btnAddYrLvl.setText("ADD");
         btnAddYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
 
         btnDeleteYrLvl.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-delete-20.png"))); // NOI18N
+        btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
         btnDeleteYrLvl.setText("DELETE");
         btnDeleteYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

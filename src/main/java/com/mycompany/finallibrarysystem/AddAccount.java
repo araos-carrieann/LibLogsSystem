@@ -59,16 +59,23 @@ public class AddAccount extends javax.swing.JDialog {
         txtStudentFacultyID = new javax.swing.JTextField();
         txtFname = new javax.swing.JTextField();
         txtLname = new javax.swing.JTextField();
+        lblUserID = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblUserEmail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setBorder(new javax.swing.border.MatteBorder(null));
         txtEmail.setMinimumSize(new java.awt.Dimension(65, 40));
         txtEmail.setPreferredSize(new java.awt.Dimension(65, 40));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 136, 290, -1));
 
         comboProgram.setBackground(new java.awt.Color(255, 255, 204));
         comboProgram.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 234, 140, 30));
 
         comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
         comboYrLvl.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -77,6 +84,7 @@ public class AddAccount extends javax.swing.JDialog {
                 comboYrLvlActionPerformed(evt);
             }
         });
+        jPanel1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 234, 150, 30));
 
         rbtnStudent.setText("STUDENT");
         rbtnStudent.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +92,7 @@ public class AddAccount extends javax.swing.JDialog {
                 rbtnStudentActionPerformed(evt);
             }
         });
+        jPanel1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 194, -1, 30));
 
         rbtnFaculty.setText("FACULTY");
         rbtnFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +100,7 @@ public class AddAccount extends javax.swing.JDialog {
                 rbtnFacultyActionPerformed(evt);
             }
         });
+        jPanel1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 194, -1, 30));
 
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +108,7 @@ public class AddAccount extends javax.swing.JDialog {
                 btnClearActionPerformed(evt);
             }
         });
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 337, 180, 30));
 
         btnSave.setText("SAVE");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +116,7 @@ public class AddAccount extends javax.swing.JDialog {
                 btnSaveActionPerformed(evt);
             }
         });
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 297, 280, 30));
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -112,18 +124,22 @@ public class AddAccount extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 407, 90, -1));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMsg.setText("jLabel1");
+        jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 377, 290, -1));
 
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStudentFacultyID.setBorder(new javax.swing.border.MatteBorder(null));
         txtStudentFacultyID.setMinimumSize(new java.awt.Dimension(65, 40));
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(65, 40));
+        jPanel1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 6, 290, -1));
 
         txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFname.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 66, 130, 40));
 
         txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtLname.setBorder(new javax.swing.border.MatteBorder(null));
@@ -132,79 +148,17 @@ public class AddAccount extends javax.swing.JDialog {
                 txtLnameActionPerformed(evt);
             }
         });
+        jPanel1.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 66, 140, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(13, 13, 13)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblWarningMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(230, 230, 230)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(rbtnStudent)
-                                .addGap(68, 68, 68)
-                                .addComponent(rbtnFaculty))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(40, 40, 40)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(20, 20, 20)
-                                    .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addContainerGap(14, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 436, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(20, 20, 20)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtFname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtLname, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(30, 30, 30)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(rbtnStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rbtnFaculty, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(10, 10, 10)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(comboProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(comboYrLvl, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(33, 33, 33)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
-                    .addComponent(lblWarningMsg)
-                    .addGap(6, 6, 6)
-                    .addComponent(btnBack)
-                    .addContainerGap()))
-        );
+        lblUserID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUserID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id_iconBig.png"))); // NOI18N
+        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        lblUsername.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/frontuser_icon.png"))); // NOI18N
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+
+        lblUserEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email_icon.png"))); // NOI18N
+        jPanel1.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,6 +273,9 @@ public class AddAccount extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> comboProgram;
     private javax.swing.JComboBox<String> comboYrLvl;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblUserEmail;
+    private javax.swing.JLabel lblUserID;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblWarningMsg;
     private javax.swing.JRadioButton rbtnFaculty;
     private javax.swing.JRadioButton rbtnStudent;

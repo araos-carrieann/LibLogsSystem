@@ -162,7 +162,7 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnGoToSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoToSignUpActionPerformed
-        // TODO add your handling code here:
+        lblWarningMsg.setVisible(false);
     }//GEN-LAST:event_btnGoToSignUpActionPerformed
 
     private void txtStudentFacultyIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStudentFacultyIDMouseClicked

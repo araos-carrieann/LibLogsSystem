@@ -98,6 +98,11 @@ public class SignUpPanel extends javax.swing.JPanel {
         btnBackToLogin.setBackground(new java.awt.Color(51, 51, 255));
         btnBackToLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnBackToLogin.setText("BACK TO LOGIN");
+        btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackToLoginActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 279, -1));
 
         txtFirstName.setBackground((new Color(0, 0, 0, 0)));
@@ -181,6 +186,11 @@ public class SignUpPanel extends javax.swing.JPanel {
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(90, 22));
+        txtStudentFacultyID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtStudentFacultyIDMouseClicked(evt);
+            }
+        });
         txtStudentFacultyID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStudentFacultyIDActionPerformed(evt);
@@ -298,6 +308,14 @@ public class SignUpPanel extends javax.swing.JPanel {
     private void txtStudentFacultyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentFacultyIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStudentFacultyIDActionPerformed
+
+    private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
+         lblWarningMsg.setVisible(false);
+    }//GEN-LAST:event_btnBackToLoginActionPerformed
+
+    private void txtStudentFacultyIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStudentFacultyIDMouseClicked
+        lblWarningMsg.setVisible(false);
+    }//GEN-LAST:event_txtStudentFacultyIDMouseClicked
 
     private String studentFacultyID, status, firstName, lastName, role, email, program, yearLevel;
     // Variables declaration - do not modify//GEN-BEGIN:variables

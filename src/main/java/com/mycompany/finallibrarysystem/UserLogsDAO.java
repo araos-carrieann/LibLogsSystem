@@ -18,11 +18,11 @@ import librarysystem.VisitorsDTO;
  *
  * @author araos
  */
-public class LogsDAO {
+public class UserLogsDAO {
 
     // Creates a new table named "logs" in the database to store user activity logs
     public static void createLogs() {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // SQL query to create the "logs" table if it doesn't already exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS logs (\n"
                     + "    logID SERIAL PRIMARY KEY,\n"
@@ -43,10 +43,10 @@ public class LogsDAO {
         }
     }
 
-    public static List<LogsDTO> getAllLogs() {
-        List<LogsDTO> dataList = new ArrayList<>();
+    public static List<UserLogsDTO> getAllLogs() {
+        List<UserLogsDTO> dataList = new ArrayList<>();
 
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT\n"
                 + "    logs.fullname,\n"
                 + "    logs.reason,\n"
@@ -79,7 +79,7 @@ public class LogsDAO {
                 String userReason = rsltSet.getString("reason");
 
                 // Create a LogsDTO object and add it to the dataList
-                LogsDTO data = new LogsDTO(userRole, userFullname, userProgram, userYrlvl, userReason, userLogin, userLogout);
+                UserLogsDTO data = new UserLogsDTO(userRole, userFullname, userProgram, userYrlvl, userReason, userLogin, userLogout);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -93,7 +93,7 @@ public class LogsDAO {
     // Retrieves a list of VisitorsDTO objects representing logs of all visitors
     public static List<VisitorsDTO> getAllVisitorsLogs() {
         List<VisitorsDTO> dataList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT "
                 + "    logs.login_time,"
                 + "    logs.logout_time,"
@@ -133,7 +133,7 @@ public class LogsDAO {
     }
 
     public static void userLogout(String stuFaculID) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_users = ? AND logout_time IS NULL")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE logs SET logout_time = TO_TIMESTAMP(TO_CHAR(CURRENT_TIMESTAMP, 'YYY-MM-DD HH24:MI:SS'),'YYY-MM-DD HH24:MI:SS') WHERE user_id_users = ? AND logout_time IS NULL")) {
 
             stmt.setString(1, stuFaculID);
             ResultSet resultSet = stmt.executeQuery();
@@ -150,7 +150,7 @@ public class LogsDAO {
     }
 
     public static boolean checkLogs(String stuFaculID) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = ?")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = ?")) {
 
             stmt.setString(1, stuFaculID);
             ResultSet resultSet = stmt.executeQuery();

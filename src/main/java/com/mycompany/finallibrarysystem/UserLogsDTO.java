@@ -8,7 +8,7 @@ package com.mycompany.finallibrarysystem;
  *
  * @author araos
  */
-public class LogsDTO {
+public class UserLogsDTO {
 
     private int userID;
     private int logsID;
@@ -27,14 +27,14 @@ public class LogsDTO {
     private String logoutTime;
     private String email;
 
-    public LogsDTO(String studentfacultyID, String firstName, String lastName, String email) {
+    public UserLogsDTO(String studentfacultyID, String firstName, String lastName, String email) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
     
-    public LogsDTO(String role, String fullname, String program, String yrlvl, String reason, String loginTime, String logoutTime) {
+    public UserLogsDTO(String role, String fullname, String program, String yrlvl, String reason, String loginTime, String logoutTime) {
         this.role = role;
         this.fullname = fullname;
         this.program = program;
@@ -44,7 +44,7 @@ public class LogsDTO {
         this.logoutTime = logoutTime;
     }
 
-    public LogsDTO(String fullname, String program, String yrlvl) {
+    public UserLogsDTO(String fullname, String program, String yrlvl) {
         this.fullname = fullname;
         this.program = program;
         this.yrlvl = yrlvl;

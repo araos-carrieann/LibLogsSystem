@@ -8,7 +8,7 @@ package com.mycompany.finallibrarysystem;
  *
  * @author araos
  */
-public class AccountDTO {
+public class AccountsDTO {
 
     private int userID;
     private int logsID;
@@ -25,25 +25,25 @@ public class AccountDTO {
     private String userLogin;
     private String userLogout;
 
-    public AccountDTO(int logsID, String fullname, String userLogin, String userLogout) {
+    public AccountsDTO(int logsID, String fullname, String userLogin, String userLogout) {
         this.logsID = logsID;
         this.fullname = fullname;
         this.userLogin = userLogin;
         this.userLogout = userLogout;
     }
 
-    public AccountDTO(String program, String yrlvl) {
+    public AccountsDTO(String program, String yrlvl) {
         this.program = program;
         this.yrlvl = yrlvl;
     }
 
-    public AccountDTO(String role, String fullname, String logsDuration, String mostLogs) {
+    public AccountsDTO(String role, String fullname, String logsDuration, String mostLogs) {
         this.role = role;
         this.fullname = fullname;
         this.mostLogs = mostLogs;
     }
 
-    public AccountDTO(int userID, String studentfacultyID, String firstName, String lastName, String email) {
+    public AccountsDTO(int userID, String studentfacultyID, String firstName, String lastName, String email) {
         this.userID = userID;
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
@@ -51,7 +51,7 @@ public class AccountDTO {
         this.email = email;
     }
 
-    public AccountDTO(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String userTimeIn, String userTimeOut) {
+    public AccountsDTO(int logsID, String studentfacultyID, String role, String firstName, String lastName, String email, String program, String yrlvl, String userTimeIn, String userTimeOut) {
         this.logsID = logsID;
         this.studentfacultyID = studentfacultyID;
         this.role = role;
@@ -65,7 +65,7 @@ public class AccountDTO {
     }
 
     //Student account
-    public AccountDTO(String studentfacultyID, String firstName, String lastName, String email, String program, String yrlvl) {
+    public AccountsDTO(String studentfacultyID, String firstName, String lastName, String email, String program, String yrlvl) {
         this.studentfacultyID = studentfacultyID;
         this.firstName = firstName;
         this.lastName = lastName;

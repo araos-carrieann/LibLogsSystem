@@ -118,13 +118,13 @@ public class LoginPanel extends javax.swing.JPanel {
 
                 String fullName = fname + " " + lname;
 
-                LogsDAO.createLogs();
-                boolean timeinTimeoutChecker = LogsDAO.checkLogs(sfID);
+                UserLogsDAO.createLogs();
+                boolean timeinTimeoutChecker = UserLogsDAO.checkLogs(sfID);
 
                 System.out.print(timeinTimeoutChecker);
                 if (status.equals("ACTIVE")) {
                     if (userRole.equals("ADMIN")) {
-                        if (!LogsDAO.checkLogs(sfID)) {
+                        if (!UserLogsDAO.checkLogs(sfID)) {
                             LibraryMethods.logUserLogin(sfID, fullName, null);
                         } else {
                             lblWarningMsg.setText("This Account is still online");
@@ -145,7 +145,7 @@ public class LoginPanel extends javax.swing.JPanel {
                                 new MainFrame().setVisible(true);
                             }
                         } else if (!timeinTimeoutChecker) {
-                            LogsDAO.userLogout(sfID);
+                            UserLogsDAO.userLogout(sfID);
                             SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
                             LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
                             dialog.setVisible(true); // Show the dialog

@@ -28,7 +28,7 @@ public class LibraryMethods {
 
     public static boolean registerUser(String status, String role, String studentFacultyID, String fname, String lname, String email, String program, String yrLvl) {
         boolean success = false;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the table if it doesn't exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(10) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, program VARCHAR(30), yearLvl VARCHAR(10))";
             stmt.executeUpdate(createTableQuery);
@@ -77,7 +77,7 @@ public class LibraryMethods {
         String program = "";
         String yearLevel = "";
 
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
             // Set the student/faculty ID as a parameter in the SQL query
             stmt.setString(1, stuFaculID);
             // Execute the query and retrieve the result set
@@ -105,7 +105,7 @@ public class LibraryMethods {
     }
 
     public static String getUserDetails(String stuFaculID) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE studentfacultyID = ?")) {
 
             // Set the student/faculty ID as a parameter in the SQL query
             stmt.setString(1, stuFaculID);
@@ -135,7 +135,7 @@ public class LibraryMethods {
     public static void logUserLogin(String stuFaculID, String fullName, String reason) {
         // Create the "logs" table if it doesn't exist
         LogsDAO.createLogs();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection()) {
+        try (Connection conn = DatabaseConnector.getConnection()) {
             // Retrieve the user ID from the users table along with status and hashed password
             String selectUserIdQuery = "SELECT id FROM users WHERE studentFacultyID = ?";
 
@@ -167,10 +167,10 @@ public class LibraryMethods {
     }
 
     // Retrieves a list of all active student account data from the database
-    public static List<librarysystem.AccountDTO> getAllStudentDatas() {
+    public static List<AccountsDTO> getAllStudentDatas() {
         // Create an empty list to store the retrieved student data
-        List<librarysystem.AccountDTO> dataList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'STUDENT' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
+        List<AccountsDTO> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'STUDENT' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
 
             // Iterate through the result set to retrieve data for each student
             while (rsltSet.next()) {
@@ -183,7 +183,7 @@ public class LibraryMethods {
                 String userYrLvl = rsltSet.getString("yearLvl");
 
                 // Create an AccountDTO object and add it to the list
-                librarysystem.AccountDTO data = new librarysystem.AccountDTO(studentID, userEmail, userFname, userLname, userProgram, userYrLvl);
+                AccountsDTO data = new AccountsDTO(studentID, userEmail, userFname, userLname, userProgram, userYrLvl);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -195,10 +195,10 @@ public class LibraryMethods {
     }
 
 // Retrieves a list of all active faculty account data from the database
-    public static List<LogsDTO> getAllFacultiesDatas() {
+    public static List<UserLogsDTO> getAllFacultiesDatas() {
         // Create an empty list to store the retrieved faculty data
-        List<LogsDTO> dataList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'FACULTY' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
+        List<UserLogsDTO> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'FACULTY' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
 
             // Iterate through the result set to retrieve data for each faculty member
             while (rsltSet.next()) {
@@ -209,7 +209,7 @@ public class LibraryMethods {
                 String userLname = rsltSet.getString("lastName");
 
                 // Create an AccountDTO object and add it to the list
-                LogsDTO data = new LogsDTO(userFacultyID, userEmail, userFname, userLname);
+                UserLogsDTO data = new UserLogsDTO(userFacultyID, userEmail, userFname, userLname);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -220,9 +220,9 @@ public class LibraryMethods {
         return dataList;
     }
 
-    public static List<librarysystem.AccountDTO> getAllAdminDatas() {
-        List<librarysystem.AccountDTO> dataList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'ADMIN' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
+    public static List<AccountsDTO> getAllAdminDatas() {
+        List<AccountsDTO> dataList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE role = 'ADMIN' AND status = 'ACTIVE';"); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 int id = rsltSet.getInt("id");
@@ -231,7 +231,7 @@ public class LibraryMethods {
                 String userFname = rsltSet.getString("firstName");
                 String userLname = rsltSet.getString("lastName");
 
-                librarysystem.AccountDTO data = new librarysystem.AccountDTO(id, facultyID, userFname, userLname, userEmail);
+                AccountsDTO data = new AccountsDTO(id, facultyID, userFname, userLname, userEmail);
                 dataList.add(data);
             }
         } catch (SQLException e) {
@@ -244,7 +244,7 @@ public class LibraryMethods {
     //Comboxes
     // Adds a program option to the program combobox in the database
     public static void programComboBox(String prog) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the "program" table if it doesn't exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS program (program VARCHAR(100))";
 
@@ -268,10 +268,10 @@ public class LibraryMethods {
     }
     // Retrieves the content of the program combobox from the "program" table in the database
 
-    public static List<librarysystem.AccountDTO> programComboContent() {
+    public static List<AccountsDTO> programComboContent() {
         // Create an empty list to store the retrieved program options
-        List<librarysystem.AccountDTO> programList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM program"); ResultSet rsltSet = stmt.executeQuery()) {
+        List<AccountsDTO> programList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM program"); ResultSet rsltSet = stmt.executeQuery()) {
 
             // Iterate through the result set to retrieve program options
             while (rsltSet.next()) {
@@ -279,7 +279,7 @@ public class LibraryMethods {
                 String program = rsltSet.getString("program");
 
                 // Create an AccountDTO object with the program option and "null" values for unused fields
-                librarysystem.AccountDTO data = new librarysystem.AccountDTO(program, "null");
+                AccountsDTO data = new AccountsDTO(program, "null");
                 programList.add(data);
             }
         } catch (SQLException e) {
@@ -292,7 +292,7 @@ public class LibraryMethods {
 
     // Deletes a program option from the "program" table in the database
     public static void deleteProgram(String program) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Prepare the SQL delete query
             String sql = "DELETE FROM program WHERE program = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -309,7 +309,7 @@ public class LibraryMethods {
 
     // Adds a year level option to the year level combobox in the database
     public static void yearLevelComboBox(String lvl) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the "yearLevel" table if it doesn't exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS yearLevel (yearLevel VARCHAR(10))";
             try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
@@ -330,16 +330,16 @@ public class LibraryMethods {
     }
 
     // Retrieves the content of the year level combobox from the "yearLevel" table in the database
-    public static List<librarysystem.AccountDTO> yearlvlComboContent() {
+    public static List<AccountsDTO> yearlvlComboContent() {
         // Create an empty list to store the retrieved year level options
-        List<librarysystem.AccountDTO> yearLevelList = new ArrayList<>();
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM yearLevel"); ResultSet rsltSet = stmt.executeQuery()) {
+        List<AccountsDTO> yearLevelList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM yearLevel"); ResultSet rsltSet = stmt.executeQuery()) {
             // Iterate through the result set to retrieve year level options
             while (rsltSet.next()) {
                 // Extract the year level from the result set
                 String yrlvl = rsltSet.getString("yearLevel");
                 // Create an AccountDTO object with the year level and "null" values for unused fields
-                librarysystem.AccountDTO data = new librarysystem.AccountDTO("null", yrlvl);
+                AccountsDTO data = new AccountsDTO("null", yrlvl);
                 yearLevelList.add(data);
             }
         } catch (SQLException e) {
@@ -351,7 +351,7 @@ public class LibraryMethods {
 
     // Deletes a year level option from the "yearLevel" table in the database
     public static void deleteYearLvl(String yrLvl) {
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Prepare the SQL delete query
             String sql = "DELETE FROM yearLevel WHERE yearLevel = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -368,7 +368,7 @@ public class LibraryMethods {
 
     public static int getUserID(String studentFacultyID) {
         int id = 0;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = '" + studentFacultyID + "'"); ResultSet rsltSet = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = '" + studentFacultyID + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
             while (rsltSet.next()) {
                 id = rsltSet.getInt("id");
@@ -381,9 +381,9 @@ public class LibraryMethods {
     }
 
     // Retrieves a list of AccountDTO objects representing users with the most logs from the "logs" table in the database
-    public static List<librarysystem.AccountDTO> mostLogs() {
+    public static List<AccountsDTO> mostLogs() {
         // Create an empty list to store user logs
-        List<librarysystem.AccountDTO> userLogs = new ArrayList<>();
+        List<AccountsDTO> userLogs = new ArrayList<>();
 
         try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, logs.fullname, COUNT(*) AS total_logs "
                 + "FROM logs "
@@ -400,7 +400,7 @@ public class LibraryMethods {
                 int totalLogs = resultSet.getInt("total_logs");
 
                 // Create a new instance of AccountDTO and add it to the userLogs list
-                librarysystem.AccountDTO userLog = new librarysystem.AccountDTO(role, fullname, null, String.valueOf(totalLogs));
+                AccountsDTO userLog = new AccountsDTO(role, fullname, null, String.valueOf(totalLogs));
                 userLogs.add(userLog);
             }
         } catch (SQLException e) {
@@ -411,8 +411,8 @@ public class LibraryMethods {
         return userLogs;
     }
 
-    public static List<LogsDTO> activeUsers() {
-        List<LogsDTO> userActive = new ArrayList<>();
+    public static List<UserLogsDTO> activeUsers() {
+        List<UserLogsDTO> userActive = new ArrayList<>();
         String sqlQuery = "SELECT logs.fullname, logs.reason, logs.login_time, logs.logout_time, "
                 + "users.studentfacultyID AS sfID, "
                 + "users.program, users.yearlvl "
@@ -420,7 +420,7 @@ public class LibraryMethods {
                 + "LEFT JOIN users ON logs.user_id_users = users.id "
                 + "WHERE logs.logout_time IS NULL";
 
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(sqlQuery); ResultSet resultSet = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(sqlQuery); ResultSet resultSet = stmt.executeQuery()) {
 
             // Loop through the ResultSet and fetch data for each row
             while (resultSet.next()) {
@@ -429,7 +429,7 @@ public class LibraryMethods {
                 String userYrlvl = resultSet.getString("yearlvl");
 
                 // Create a LogsDTO object and populate it with the retrieved data
-                LogsDTO onlineUser = new LogsDTO(userFullname, userProgram, userYrlvl);
+                UserLogsDTO onlineUser = new UserLogsDTO(userFullname, userProgram, userYrlvl);
                 userActive.add(onlineUser);
             }
         } catch (SQLException e) {
@@ -443,7 +443,7 @@ public class LibraryMethods {
     // Retrieves the visitor ID from the "visitors" table based on the given code identity
     public static int getVisitorID(String codeIdentity) {
         int id = 0;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM visitors WHERE codeidentity = '" + codeIdentity + "'"); ResultSet rsltSet = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM visitors WHERE codeidentity = '" + codeIdentity + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
             // Retrieve the visitor ID from the result set
             while (rsltSet.next()) {
@@ -459,7 +459,7 @@ public class LibraryMethods {
 // Retrieves the student or faculty ID from the "users" table based on the given email
     public static String getStudentFacultyID(String email) {
         String studentFacultyID = null;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT studentFacultyID FROM users WHERE email = '" + email + "'"); ResultSet rsltSet = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT studentFacultyID FROM users WHERE email = '" + email + "'"); ResultSet rsltSet = stmt.executeQuery()) {
 
             // Retrieve the student or faculty ID from the result set
             while (rsltSet.next()) {
@@ -475,7 +475,7 @@ public class LibraryMethods {
     // Retrieves the total number of rows in the "users" table
     public static int getTotalUserRows() {
         int totalRows = 0;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_rows FROM users"); ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_rows FROM users"); ResultSet rs = stmt.executeQuery()) {
 
             // Retrieve the total number of rows from the result set
             if (rs.next()) {
@@ -491,7 +491,7 @@ public class LibraryMethods {
     // Retrieves the total number of active users (users with a null logout_time) from the "logs" table
     public static int getTotalActiveUser() {
         int totalActive = 0;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_active FROM logs WHERE logout_time IS NULL;"); ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT COUNT(*) AS total_active FROM logs WHERE logout_time IS NULL;"); ResultSet rs = stmt.executeQuery()) {
 
             // Retrieve the total number of active users from the result set
             if (rs.next()) {
@@ -507,7 +507,7 @@ public class LibraryMethods {
     // Retrieves the login time of a specific student based on their studentFacultyID
     public String getTimeLogin(String studentFacultyID) {
         String loginTime = null;
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
                 "SELECT login_time FROM logs "
                 + "WHERE user_id_users = (SELECT id FROM users WHERE studentFacultyID = ?) "
                 + "AND logout_time IS NULL")) {

@@ -27,9 +27,9 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         DefaultTableModel allProgram = (DefaultTableModel) programTable.getModel();
         allProgram.setRowCount(0);
 
-        List<librarysystem.AccountDTO> programList = librarysystem.LibraryMethods.programComboContent();
+        List<AccountsDTO> programList = LibraryMethods.programComboContent();
 
-        for (librarysystem.AccountDTO program : programList) {
+        for (AccountsDTO program : programList) {
             Object[] programRow = {program.getProgram()};
             allProgram.addRow(programRow);
         }

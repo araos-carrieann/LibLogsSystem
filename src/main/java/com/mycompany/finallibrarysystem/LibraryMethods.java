@@ -13,12 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import librarysystem.LogsDAO;
-import librarysystem.LogsDTO;
-import scroll.ScrollBarCustom;
 
 /**
  *
@@ -134,7 +129,7 @@ public class LibraryMethods {
     // Logs user login activity in the database based on the provided student/faculty ID, full name, and password
     public static void logUserLogin(String stuFaculID, String fullName, String reason) {
         // Create the "logs" table if it doesn't exist
-        LogsDAO.createLogs();
+        UserLogsDAO.createLogs();
         try (Connection conn = DatabaseConnector.getConnection()) {
             // Retrieve the user ID from the users table along with status and hashed password
             String selectUserIdQuery = "SELECT id FROM users WHERE studentFacultyID = ?";
@@ -385,7 +380,7 @@ public class LibraryMethods {
         // Create an empty list to store user logs
         List<AccountsDTO> userLogs = new ArrayList<>();
 
-        try (Connection conn = librarysystem.DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, logs.fullname, COUNT(*) AS total_logs "
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT users.role, logs.fullname, COUNT(*) AS total_logs "
                 + "FROM logs "
                 + "JOIN users ON logs.user_id_users = users.id "
                 + "GROUP BY users.role, logs.fullname "
@@ -525,16 +520,6 @@ public class LibraryMethods {
             e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
         return loginTime;
-    }
-
-    // Sets custom vertical and horizontal scroll bars for a JScrollPane
-    public void Scroll(JScrollPane pane) {
-        // Set the custom vertical scroll bar
-        pane.setVerticalScrollBar(new ScrollBarCustom());
-        // Set the custom horizontal scroll bar
-        ScrollBarCustom sp = new ScrollBarCustom();
-        sp.setOrientation(JScrollBar.HORIZONTAL);
-        pane.setHorizontalScrollBar(sp);
     }
 
     // Customizes the appearance of a JTable's header

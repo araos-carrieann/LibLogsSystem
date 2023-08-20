@@ -31,7 +31,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         this.sfID = sfID;
         initComponents();
         lblAdminsName.setText(fname);
-        librarysystem.LibraryMethods clm = new librarysystem.LibraryMethods();
+        LibraryMethods libMethods = new LibraryMethods();
         displayAllActiveUser();
         displayMostLogs();
         displayLogs();
@@ -50,8 +50,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail(), acct.getProgram(), acct.getYrlvl()};
             studentAccount.addRow(row);
         }
-        lblTotalNumberUsers.setText(String.valueOf(librarysystem.LibraryMethods.getTotalUserRows()));
-        lblNumberOfActive.setText(String.valueOf(librarysystem.LibraryMethods.getTotalActiveUser()));
+        lblTotalNumberUsers.setText(String.valueOf(LibraryMethods.getTotalUserRows()));
+        lblNumberOfActive.setText(String.valueOf(LibraryMethods.getTotalActiveUser()));
     }
 
     public void searchStudentAcct(String search) {
@@ -80,20 +80,20 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             facultyAccount.addRow(row);
         }
-        lblTotalNumberUsers.setText(String.valueOf(librarysystem.LibraryMethods.getTotalUserRows()));
+        lblTotalNumberUsers.setText(String.valueOf(LibraryMethods.getTotalUserRows()));
     }
 
     void displayAdminAccount() {
         DefaultTableModel adminAccount = (DefaultTableModel) adminAccountTable.getModel();
         adminAccount.setRowCount(0);
 
-        List<librarysystem.AccountDTO> acctList = librarysystem.LibraryMethods.getAllAdminDatas();
+        List<AccountsDTO> acctList = LibraryMethods.getAllAdminDatas();
 
-        for (librarysystem.AccountDTO acct : acctList) {
+        for (AccountsDTO acct : acctList) {
             Object[] row = {acct.getStudentfacultyID(), acct.getFirstName(), acct.getLastName(), acct.getEmail()};
             adminAccount.addRow(row);
         }
-        lblTotalNumberUsers.setText(String.valueOf(librarysystem.LibraryMethods.getTotalUserRows()));
+        lblTotalNumberUsers.setText(String.valueOf(LibraryMethods.getTotalUserRows()));
     }
 
     public void searchAdminAcct(String search) {
@@ -146,9 +146,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         DefaultTableModel mostLogs = (DefaultTableModel) mostLogsTable.getModel();
         mostLogs.setRowCount(0);
 
-        List<librarysystem.AccountDTO> mostLogsList = librarysystem.LibraryMethods.mostLogs();
+        List<AccountsDTO> mostLogsList = LibraryMethods.mostLogs();
 
-        for (librarysystem.AccountDTO acct : mostLogsList) {
+        for (AccountsDTO acct : mostLogsList) {
             Object[] mLogs = {acct.getRole(), acct.getFullname(), acct.getMostLogs()};
             mostLogs.addRow(mLogs);
         }

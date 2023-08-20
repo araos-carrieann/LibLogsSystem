@@ -11,8 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import librarysystem.LogsDTO;
-import librarysystem.VisitorsDTO;
 
 /**
  *
@@ -87,48 +85,6 @@ public class UserLogsDAO {
         }
 
         // Return the list of LogsDTO containing the retrieved data
-        return dataList;
-    }
-
-    // Retrieves a list of VisitorsDTO objects representing logs of all visitors
-    public static List<VisitorsDTO> getAllVisitorsLogs() {
-        List<VisitorsDTO> dataList = new ArrayList<>();
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement(
-                "SELECT "
-                + "    logs.login_time,"
-                + "    logs.logout_time,"
-                + "    visitors.fullname AS fullname,"
-                + "    visitors.mobilenumber AS mobilenumber,"
-                + "    visitors.email AS email,"
-                + "    visitors.gender AS gender,"
-                + "    visitors.purpose AS purpose "
-                + "FROM "
-                + "    logs "
-                + "RIGHT JOIN "
-                + "    visitors "
-                + "ON "
-                + "    logs.user_id_visitors = visitors.id "
-                + "ORDER BY "
-                + "    logs.login_time DESC"); ResultSet rsltSet = stmt.executeQuery()) {
-
-            // Retrieve visitors' logs from the result set
-            while (rsltSet.next()) {
-                String userFullname = rsltSet.getString("fullname");
-                String mobilenumber = rsltSet.getString("mobilenumber");
-                String email = rsltSet.getString("email");
-                String gender = rsltSet.getString("gender");
-                String purpose = rsltSet.getString("purpose");
-                String userLogin = rsltSet.getString("login_time");
-                String userLogout = rsltSet.getString("logout_time");
-
-                // Create a new instance of VisitorsDTO and add it to the dataList
-                VisitorsDTO data = new VisitorsDTO(userFullname, email, mobilenumber, gender, purpose, userLogin, userLogout);
-                dataList.add(data);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
-        }
-
         return dataList;
     }
 

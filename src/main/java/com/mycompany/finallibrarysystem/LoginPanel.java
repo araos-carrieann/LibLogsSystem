@@ -51,7 +51,7 @@ public class LoginPanel extends javax.swing.JPanel {
         });
         panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 300, 50));
 
-        comboBoxReason.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboBoxReason.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REASON", "SLEEP", "REVIEW", "THESIS" }));
         comboBoxReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxReasonActionPerformed(evt);
@@ -135,7 +135,6 @@ public class LoginPanel extends javax.swing.JPanel {
                     } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
                         if (timeinTimeoutChecker) {
                             if (reason.equals("REASON")) {
-                                System.out.print("CNNNN");
                                 lblWarningMsg.setText("Specify your Reason");
                             } else if (!reason.equals("REASON")) {
                                 LibraryMethods.logUserLogin(sfID, fullName, reason);

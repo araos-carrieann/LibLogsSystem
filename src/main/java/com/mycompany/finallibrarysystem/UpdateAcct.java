@@ -79,19 +79,19 @@ public class UpdateAcct extends javax.swing.JDialog {
     }
 
     private void insertContentComboProgram() {
-        List<librarysystem.AccountDTO> programList = librarysystem.LibraryMethods.programComboContent();
+        List<AccountsDTO> programList = LibraryMethods.programComboContent();
         comboProgram.removeAllItems(); // Clear existing items
 
-        for (librarysystem.AccountDTO data : programList) {
+        for (AccountsDTO data : programList) {
             comboProgram.addItem(data.getProgram());
         }
     }
 
     private void insertContentComboYearLvl() {
-        List<librarysystem.AccountDTO> yrLvlList = librarysystem.LibraryMethods.yearlvlComboContent();
+        List<AccountsDTO> yrLvlList = LibraryMethods.yearlvlComboContent();
         comboYrLvl.removeAllItems(); // Clear existing items
 
-        for (librarysystem.AccountDTO data : yrLvlList) {
+        for (AccountsDTO data : yrLvlList) {
             comboYrLvl.addItem(data.getYrlvl());
         }
     }

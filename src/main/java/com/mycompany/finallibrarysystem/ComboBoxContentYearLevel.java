@@ -49,6 +49,8 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        panelGradient1.setColorPrimary(new java.awt.Color(255, 255, 51));
+
         yrLvlTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
@@ -60,10 +62,15 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
                 "YEAR LEVEL"
             }
         ));
+        yrLvlTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                yrLvlTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(yrLvlTable);
 
         panelGradient1.add(jScrollPane2);
-        jScrollPane2.setBounds(50, 140, 250, 190);
+        jScrollPane2.setBounds(40, 140, 280, 190);
 
         txtAddYrLvl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAddYrLvl.setBorder(null);
@@ -73,7 +80,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(txtAddYrLvl);
-        txtAddYrLvl.setBounds(140, 50, 64, 16);
+        txtAddYrLvl.setBounds(100, 50, 160, 30);
 
         btnAddYrLvl.setBackground(new java.awt.Color(204, 255, 204));
         btnAddYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -85,19 +92,20 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnAddYrLvl);
-        btnAddYrLvl.setBounds(60, 100, 80, 27);
+        btnAddYrLvl.setBounds(40, 100, 100, 27);
 
         btnDeleteYrLvl.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteYrLvl.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteYrLvl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
         btnDeleteYrLvl.setText("DELETE");
+        btnDeleteYrLvl.setEnabled(false);
         btnDeleteYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteYrLvlActionPerformed(evt);
             }
         });
         panelGradient1.add(btnDeleteYrLvl);
-        btnDeleteYrLvl.setBounds(210, 100, 94, 27);
+        btnDeleteYrLvl.setBounds(220, 100, 100, 27);
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -114,18 +122,20 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         lblWarningMessage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMessage.setText("jLabel1");
         panelGradient1.add(lblWarningMessage);
-        lblWarningMessage.setBounds(50, 350, 250, 24);
+        lblWarningMessage.setBounds(40, 350, 280, 24);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("YEAR LEVEL");
         panelGradient1.add(jLabel2);
-        jLabel2.setBounds(110, 20, 101, 25);
+        jLabel2.setBounds(130, 10, 101, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +143,7 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddYrLvlActionPerformed
@@ -143,30 +154,39 @@ public class ComboBoxContentYearLevel extends javax.swing.JDialog {
         String addYrLvl = txtAddYrLvl.getText();
         if (addYrLvl.isEmpty()) {
             lblWarningMessage.setVisible(true);
-            lblWarningMessage.setText("Please input appropriate year level.");
+            lblWarningMessage.setText("Please Input Appropriate Year Level.");
         } else {
-            LibraryMethods.yearLevelComboBox(addYrLvl);
-            displayYearLvl();
-            txtAddYrLvl.setText("");
-            lblWarningMessage.setVisible(false);
+            if (LibraryMethods.addYearLevelComboBox(addYrLvl)) {
+                displayYearLvl();
+                txtAddYrLvl.setText("");
+                lblWarningMessage.setVisible(false);
+            } else {
+                lblWarningMessage.setVisible(true);
+                lblWarningMessage.setText("This Year Level Already Exist");
+            }
         }
     }//GEN-LAST:event_btnAddYrLvlActionPerformed
 
     private void btnDeleteYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteYrLvlActionPerformed
         DefaultTableModel model = (DefaultTableModel) yrLvlTable.getModel();
         int selectedRow = yrLvlTable.getSelectedRow();
-        if (selectedRow != 1) {
+        if (selectedRow != 0) {
             String yrLvl = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             LibraryMethods.deleteYearLvl(yrLvl);
             displayYearLvl();
             lblWarningMessage.setVisible(false);
+            btnDeleteYrLvl.setEnabled(false);
         }
     }//GEN-LAST:event_btnDeleteYrLvlActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void yrLvlTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_yrLvlTableMouseClicked
+        btnDeleteYrLvl.setEnabled(true);
+    }//GEN-LAST:event_yrLvlTableMouseClicked
 
     /**
      * @param args the command line arguments

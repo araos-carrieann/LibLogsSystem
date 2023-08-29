@@ -139,7 +139,7 @@ public class LoginPanel extends javax.swing.JPanel {
                             } else if (!reason.equals("REASON")) {
                                 LibraryMethods.logUserLogin(sfID, fullName, reason);
                                 SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
-                                WelcomeUser dialog = new WelcomeUser(new javax.swing.JFrame(), true);
+                                WelcomeUser dialog = new WelcomeUser(new javax.swing.JFrame(), true, fullName);
                                 dialog.setVisible(true); // Show the dialog
                                 new MainFrame().setVisible(true);
                             }

@@ -50,7 +50,6 @@ public class UpdateAcct extends javax.swing.JDialog {
     public void setFacultyData(int id, String stuFaculID, String department, String email, String firstName, String lastName) {
         this.id = id;
         this.stuFaculID = stuFaculID;
-        this.department = department;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -100,6 +99,7 @@ public class UpdateAcct extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         txtLastName = new javax.swing.JTextField();
         rbtnFaculty = new javax.swing.JRadioButton();
@@ -121,9 +121,21 @@ public class UpdateAcct extends javax.swing.JDialog {
         txtLastName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtLastName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
 
+        buttonGroup1.add(rbtnFaculty);
         rbtnFaculty.setText("FACULTY");
+        rbtnFaculty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnFacultyActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(rbtnAdmin);
         rbtnAdmin.setText("ADMIN");
+        rbtnAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnAdminActionPerformed(evt);
+            }
+        });
 
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
@@ -137,13 +149,19 @@ public class UpdateAcct extends javax.swing.JDialog {
         saveChanges.setBackground(new java.awt.Color(0, 102, 255));
         saveChanges.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         saveChanges.setText("SAVE");
+        saveChanges.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveChangesActionPerformed(evt);
+            }
+        });
 
+        buttonGroup1.add(rbtnStudent);
         rbtnStudent.setText("STUDENT");
 
         comboProgram.setBackground(new java.awt.Color(255, 255, 204));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-error-24.png"))); // NOI18N
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMsg.setText("jLabel1");
 
         btnBack.setBackground(new java.awt.Color(0, 102, 255));
@@ -234,11 +252,76 @@ public class UpdateAcct extends javax.swing.JDialog {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 460));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void saveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveChangesActionPerformed
+        status = "ACTIVE";
+        role = null;
+        studentFacultyID = txtStudentFacultyID.getText();
+        firstName = txtFirstName.getText();
+        lastName = txtLastName.getText();
+        email = txtEmail.getText();
+        program = (String) comboProgram.getSelectedItem();
+        yearLevel = (String) comboYrLvl.getSelectedItem();
+
+        lblWarningMsg.setVisible(true);
+        if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
+            lblWarningMsg.setText("Please input all required fields.");
+        } else if (studentFacultyID.isEmpty()) {
+            lblWarningMsg.setText("Please Specify your ID");
+        } else if (firstName.isEmpty() || lastName.isEmpty()) {
+            lblWarningMsg.setText("Please specify your name.");
+        } else if (email.isEmpty()) {
+            lblWarningMsg.setText("Please input your email.");
+        } else if (!firstName.matches("[A-Za-z0-9\\-. ]+") || !lastName.matches("[A-Za-z0-9\\-. ]+")) {
+            lblWarningMsg.setText("Name should only consist of letters, numbers, dashes, dots, or spaces.");
+        } else if (!email.matches("[\\w.-]+@[a-zA-Z0-9-]+\\.[a-zA-Z]{2,}")) {
+            lblWarningMsg.setText("Invalid email address format.");
+        } else if (!rbtnStudent.isSelected() && !rbtnFaculty.isSelected() && !rbtnAdmin.isSelected()) {
+            lblWarningMsg.setText("Select your Role");
+        } else {
+            AccountDAO acct = new AccountDAO();
+            if (rbtnStudent.isSelected()) {
+                if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
+                    lblWarningMsg.setText("Please specify your program/year level.");
+                } else {
+                    role = rbtnStudent.getText();
+                    String msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel);
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
+                    lblWarningMsg.setText(msg);
+                }
+            } else if (rbtnFaculty.isSelected()) {
+                role = rbtnFaculty.getText();
+                program = null;
+                yearLevel = null;
+                String msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel);
+                lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
+                lblWarningMsg.setText(msg);
+            } else {
+                role = rbtnAdmin.getText();
+                program = null;
+                yearLevel = null;
+                String msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel);
+                lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
+                lblWarningMsg.setText(msg);
+            }
+        }
+    }//GEN-LAST:event_saveChangesActionPerformed
+
+    private void rbtnFacultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFacultyActionPerformed
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
+    }//GEN-LAST:event_rbtnFacultyActionPerformed
+
+    private void rbtnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnAdminActionPerformed
+        comboProgram.setVisible(false);
+        comboYrLvl.setVisible(false);
+    }//GEN-LAST:event_rbtnAdminActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,9 +366,10 @@ public class UpdateAcct extends javax.swing.JDialog {
     }
 
     int id;
-    private String msg, stuFaculID, firstName, lastName, email, program, yearLevel, department;
+    private String stuFaculID, studentFacultyID, status, firstName, lastName, role, email, program, yearLevel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> comboProgram;
     private javax.swing.JComboBox<String> comboYrLvl;
     private javax.swing.JLabel jLabel4;

@@ -65,10 +65,15 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 "PROGRAM"
             }
         ));
+        programTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                programTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(programTable);
 
         panelGradient1.add(jScrollPane1);
-        jScrollPane1.setBounds(30, 150, 280, 180);
+        jScrollPane1.setBounds(40, 150, 280, 180);
 
         txtAddProgram.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtAddProgram.setBorder(null);
@@ -78,7 +83,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(txtAddProgram);
-        txtAddProgram.setBounds(90, 60, 150, 30);
+        txtAddProgram.setBounds(70, 60, 210, 30);
 
         btnAddProgram.setBackground(new java.awt.Color(204, 255, 204));
         btnAddProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -90,19 +95,20 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
             }
         });
         panelGradient1.add(btnAddProgram);
-        btnAddProgram.setBounds(60, 110, 80, 27);
+        btnAddProgram.setBounds(40, 110, 100, 27);
 
         btnDeleteProgram.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDeleteProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
         btnDeleteProgram.setText("DELETE");
+        btnDeleteProgram.setEnabled(false);
         btnDeleteProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteProgramActionPerformed(evt);
             }
         });
         panelGradient1.add(btnDeleteProgram);
-        btnDeleteProgram.setBounds(190, 110, 94, 27);
+        btnDeleteProgram.setBounds(210, 110, 110, 27);
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -124,13 +130,15 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("PROGRAM");
         panelGradient1.add(jLabel1);
-        jLabel1.setBounds(120, 20, 92, 25);
+        jLabel1.setBounds(130, 20, 92, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelGradient1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelGradient1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,6 +148,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddProgramActionPerformed
@@ -150,30 +159,40 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         String addProgram = txtAddProgram.getText();
         if (addProgram.isEmpty()) {
             lblWarningMessage.setVisible(true);
-
+            lblWarningMessage.setText("Please Input Appropriate Program.");
         } else {
-            LibraryMethods.programComboBox(addProgram);
-            displayProgram();
-            txtAddProgram.setText("");
-            lblWarningMessage.setVisible(false);
+            if (LibraryMethods.addProgramComboBox(addProgram)) {
+                System.out.println("HI");
+                displayProgram();
+                txtAddProgram.setText("");
+                lblWarningMessage.setVisible(false);
+            }else{
+                lblWarningMessage.setVisible(true);
+                lblWarningMessage.setText("This Program Already Exist");
+            }
         }
     }//GEN-LAST:event_btnAddProgramActionPerformed
 
     private void btnDeleteProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProgramActionPerformed
         DefaultTableModel model = (DefaultTableModel) programTable.getModel();
         int selectedRow = programTable.getSelectedRow();
-        if (selectedRow != 1) {
+        if (selectedRow != 0) {
             String program = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             LibraryMethods.deleteProgram(program);
             displayProgram();
             lblWarningMessage.setVisible(false);
+            btnDeleteProgram.setEnabled(false);
         }
     }//GEN-LAST:event_btnDeleteProgramActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void programTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_programTableMouseClicked
+        btnDeleteProgram.setEnabled(true);
+    }//GEN-LAST:event_programTableMouseClicked
 
     /**
      * @param args the command line arguments

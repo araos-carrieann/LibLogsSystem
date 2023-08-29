@@ -5,8 +5,13 @@
 package com.mycompany.finallibrarysystem;
 
 import java.awt.Color;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -18,6 +23,7 @@ import javax.swing.table.TableRowSorter;
 public class AdminDashboard extends javax.swing.JFrame {
 
     private String sfID;
+    private int usersCount;
 
     public String getSfID() {
         return sfID;
@@ -38,6 +44,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         displayStudentAccount();
         displayFacultyAccount();
         displayAdminAccount();
+        contentComboYearLvl();
+        contentComboProgram();
     }
 
     void displayStudentAccount() {
@@ -122,6 +130,13 @@ public class AdminDashboard extends javax.swing.JFrame {
             Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getReason(), acct.getLoginTime(), acct.getLogoutTime()};
             allLogs.addRow(logsRow);
         }
+        UserLogsDAO usersAccessObj = new UserLogsDAO();
+        try {
+            usersCount = usersAccessObj.recordCount();
+            totalRecordCountValue.setText("Total Record Count: " + String.valueOf(usersCount));
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(jPanel1, "Something went wrong with filterTable method");
+        }
     }
 
     private void insertContentComboProgram() {
@@ -165,6 +180,24 @@ public class AdminDashboard extends javax.swing.JFrame {
             userOnline.addRow(onlineUser);
         }
     }
+
+    private void contentComboProgram() {
+        List<AccountsDTO> programList = LibraryMethods.programComboContent();
+        comboProgram.removeAllItems(); // Clear existing items
+
+        for (AccountsDTO data : programList) {
+            comboProgram.addItem(data.getProgram());
+        }
+    }
+
+    private void contentComboYearLvl() {
+        List<AccountsDTO> yrLvlList = LibraryMethods.yearlvlComboContent();
+        comboYrLvl.removeAllItems(); // Clear existing items
+
+        for (AccountsDTO data : yrLvlList) {
+            comboYrLvl.addItem(data.getYrlvl());
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -196,6 +229,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblNumberOfActive = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        btnProgram = new javax.swing.JButton();
+        btnYearLevel = new javax.swing.JButton();
         panelBorder4 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblAdminsName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -224,9 +259,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         logsPage = new javax.swing.JPanel();
         panelBorder9 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        comboProgram = new javax.swing.JComboBox<>();
         logsPane = new javax.swing.JScrollPane();
         logsTable = new javax.swing.JTable();
         txtSearchLogs = new javax.swing.JTextField();
+        endDateChooser = new com.toedter.calendar.JDateChooser();
+        startDateChooser = new com.toedter.calendar.JDateChooser();
+        comboYrLvl = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        totalRecordCountValue = new javax.swing.JLabel();
+        lblStart = new javax.swing.JLabel();
+        lblEnd = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -242,8 +286,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelHome.setBackground(new java.awt.Color(128, 0, 0));
         panelHome.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblDashboard.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblDashboard.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 223, 0));
+        lblDashboard.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\dashboard_icon.png")); // NOI18N
         lblDashboard.setText("DASHBOARD");
         lblDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -264,8 +309,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelAccounts.setBackground(new java.awt.Color(128, 0, 0));
         panelAccounts.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAccounts.setForeground(new java.awt.Color(255, 223, 0));
+        lblAccounts.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\users_icon.png")); // NOI18N
         lblAccounts.setText("ACCOUNTS");
         lblAccounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -286,8 +332,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelLogs.setBackground(new java.awt.Color(128, 0, 0));
         panelLogs.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAllLogs.setForeground(new java.awt.Color(255, 223, 0));
+        lblAllLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-logs-64.png")); // NOI18N
         lblAllLogs.setText("LOGS");
         lblAllLogs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -383,9 +430,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         scroll.setViewportView(mostLogsTable);
 
         panelBorder2.add(scroll);
-        scroll.setBounds(10, 60, 390, 210);
+        scroll.setBounds(10, 60, 400, 210);
 
-        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 410, 280));
+        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 420, 280));
 
         panelBorder3.setBackground(new java.awt.Color(128, 0, 0));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -429,12 +476,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
 
         lblTotalNumberUsers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblTotalNumberUsers.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalNumberUsers.setText("0");
         panelBorder5.add(lblTotalNumberUsers);
         lblTotalNumberUsers.setBounds(110, 0, 110, 100);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardRegisteredUserIcon.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-checked-user-male-50.png")); // NOI18N
         panelBorder5.add(jLabel2);
         jLabel2.setBounds(30, 0, 100, 100);
 
@@ -443,30 +491,51 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder6.setBackground(new java.awt.Color(128, 0, 0));
 
         lblNumberOfActive.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblNumberOfActive.setForeground(new java.awt.Color(255, 255, 255));
         lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNumberOfActive.setText("0");
         panelBorder6.add(lblNumberOfActive);
         lblNumberOfActive.setBounds(110, 0, 110, 100);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardActiveUser.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-online-50 (1).png")); // NOI18N
         panelBorder6.add(jLabel4);
         jLabel4.setBounds(30, 0, 70, 100);
 
         homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 100));
 
         panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
-        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 410, 230));
+
+        btnProgram.setText("jButton2");
+        btnProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProgramActionPerformed(evt);
+            }
+        });
+        panelBorder7.add(btnProgram);
+        btnProgram.setBounds(50, 50, 75, 23);
+
+        btnYearLevel.setText("jButton3");
+        btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYearLevelActionPerformed(evt);
+            }
+        });
+        panelBorder7.add(btnYearLevel);
+        btnYearLevel.setBounds(50, 120, 75, 23);
+
+        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 410, 230));
 
         panelBorder4.setBackground(new java.awt.Color(128, 0, 0));
 
         lblAdminsName.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        lblAdminsName.setForeground(new java.awt.Color(255, 255, 255));
         lblAdminsName.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblAdminsName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/userdashboard_icon.png"))); // NOI18N
         lblAdminsName.setText("name");
         panelBorder4.add(lblAdminsName);
-        lblAdminsName.setBounds(170, 10, 230, 70);
+        lblAdminsName.setBounds(170, 10, 240, 70);
 
-        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 410, 90));
+        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 420, 90));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
         jLabel1.setText("DASHBOARD");
@@ -744,7 +813,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jTabbedPane1.addTab("FACULTY", jPanel4);
 
         panelBorder8.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 10, 850, 520);
+        jTabbedPane1.setBounds(10, 10, 920, 520);
 
         accountPage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 940, 550));
 
@@ -758,6 +827,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBorder9.setBackground(new java.awt.Color(128, 0, 0));
+
+        panelBorder9.add(comboProgram);
+        comboProgram.setBounds(30, 72, 110, 30);
 
         logsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -785,7 +857,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsPane.setViewportView(logsTable);
 
         panelBorder9.add(logsPane);
-        logsPane.setBounds(10, 130, 930, 440);
+        logsPane.setBounds(10, 130, 930, 400);
 
         txtSearchLogs.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtSearchLogs.setText("Search");
@@ -796,6 +868,51 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         panelBorder9.add(txtSearchLogs);
         txtSearchLogs.setBounds(650, 10, 290, 30);
+        panelBorder9.add(endDateChooser);
+        endDateChooser.setBounds(500, 70, 150, 30);
+        panelBorder9.add(startDateChooser);
+        startDateChooser.setBounds(320, 70, 150, 30);
+
+        panelBorder9.add(comboYrLvl);
+        comboYrLvl.setBounds(160, 72, 110, 30);
+
+        jButton1.setText("REFRESH");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        panelBorder9.add(jButton1);
+        jButton1.setBounds(690, 70, 90, 23);
+
+        totalRecordCountValue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        totalRecordCountValue.setForeground(new java.awt.Color(255, 255, 255));
+        totalRecordCountValue.setText("jLabel7");
+        panelBorder9.add(totalRecordCountValue);
+        totalRecordCountValue.setBounds(670, 540, 270, 25);
+
+        lblStart.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblStart.setForeground(new java.awt.Color(255, 255, 255));
+        lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStart.setText("START DATE");
+        panelBorder9.add(lblStart);
+        lblStart.setBounds(320, 50, 150, 21);
+
+        lblEnd.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblEnd.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnd.setText("END DATE");
+        panelBorder9.add(lblEnd);
+        lblEnd.setBounds(497, 50, 150, 21);
+
+        btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        panelBorder9.add(btnClear);
+        btnClear.setBounds(810, 70, 90, 23);
 
         logsPage.add(panelBorder9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 79, 950, 580));
 
@@ -823,6 +940,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDashboardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDashboardMouseClicked
@@ -891,6 +1009,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String studentID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             AccountDAO.deleteAcct(studentID);
+            btnDeleteStuAcct.setEnabled(false);
         }
     }//GEN-LAST:event_btnDeleteStuAcctActionPerformed
 
@@ -946,6 +1065,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             String facultyID = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
             AccountDAO.deleteAcct(facultyID);
+            btnDeleteFacultyAcct.setEnabled(false);
         } else {
             // lblWarningMessage.setText("Please Select a row you want to delete before hitting the button");
         }
@@ -1011,6 +1131,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             displayStudentAccount();
             displayFacultyAccount();
             displayAdminAccount();
+            btnDeleteAdminAcct.setEnabled(false);
         }
     }//GEN-LAST:event_btnDeleteAdminAcctActionPerformed
 
@@ -1047,7 +1168,200 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void txtSearchLogsKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchLogsKeyReleased
         String search = txtSearchLogs.getText();
         searchUserLogs(search);
+        totalRecordCountValue.setText("");
     }//GEN-LAST:event_txtSearchLogsKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String filterProgram = comboProgram.getSelectedItem().toString();
+        String filterYearlevel = comboYrLvl.getSelectedItem().toString();
+        UserLogsDAO usersAccessObj = new UserLogsDAO();
+        DefaultTableModel filterLogs = (DefaultTableModel) logsTable.getModel();
+        if ((startDateChooser.getDate() == null && endDateChooser.getDate() == null) || (startDateChooser.getDate() != null && endDateChooser.getDate() != null)) {
+
+            // Proceeds here if both date are null and/or not null, will force user to choose dates
+            if (startDateChooser.getDate() != null && endDateChooser.getDate() != null) {
+
+                // Proceeds here if both date are not null/empty...
+                // Then assigning values into variable
+                java.util.Date startDate = startDateChooser.getDate();
+                java.util.Date endDate = endDateChooser.getDate();
+                Date start = new java.sql.Date(startDate.getTime());
+                Date end = new java.sql.Date(endDate.getTime());
+                System.out.println(start + " " + end);
+
+                if (!comboProgram.getSelectedItem().toString().equals("PROGRAM")
+                        && !comboYrLvl.getSelectedItem().toString().equals("YEAR LEVEL")) {
+
+                    // Proceeds here if filterProgram and filterYearlevel are not default
+                    // We will reload the Custom JTable here with new data from filtering
+                    List<UserLogsDTO> filteredUsers;
+
+                    try {
+                        filteredUsers = usersAccessObj.filterTable(filterProgram, filterYearlevel, start, end);
+                        filterLogs.setRowCount(0); // This is to reset the current table
+                        if (filteredUsers != null) {
+                            for (UserLogsDTO acct : filteredUsers) {
+                                Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getReason(), acct.getLoginTime(), acct.getLogoutTime()};
+                                filterLogs.addRow(logsRow);
+                            }
+                        } else {
+                            System.out.println("No data to be shown here!");
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with filterTable method");
+                    }
+
+                    // Re-assiging text to our data counter
+                    try {
+                        usersCount = usersAccessObj.recordCount(filterProgram, filterYearlevel, start, end);
+                        totalRecordCountValue.setText("Total Record Count: " + String.valueOf(usersCount));
+                        System.out.println(String.valueOf(usersCount));
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with recordCount method.");
+                    }
+
+                    logsTable.repaint(); // This is to reload the current table and show new data
+                    JOptionPane.showMessageDialog(jPanel1, "if block was used");
+
+                } else if (!comboProgram.getSelectedItem().toString().equals("PROGRAM")
+                        && comboYrLvl.getSelectedItem().toString().equals("YEAR LEVEL")) {
+
+                    System.out.println("may prog");
+                    // Proceeds here if filterProgram is default and filterYearlevel is not
+                    // We will reload the Custom JTable here with new data from filtering
+                    List<UserLogsDTO> filteredUsers;
+
+                    try {
+                        filteredUsers = usersAccessObj.filterTable(filterProgram, start, end);
+                        filterLogs.setRowCount(0); // This is to reset the current table
+                        if (filteredUsers != null) {
+                            for (UserLogsDTO acct : filteredUsers) {
+                                Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getReason(), acct.getLoginTime(), acct.getLogoutTime()};
+                                filterLogs.addRow(logsRow);
+                            }
+                        } else {
+                            System.out.println("No data to be shown here!");
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with filterTable method");
+                    }
+
+                    // Re-assiging text to our data counter
+                    try {
+                        usersCount = usersAccessObj.recordCount(filterProgram, start, end);
+                        totalRecordCountValue.setText("Total Record Count: " + String.valueOf(usersCount));
+                        System.out.println(String.valueOf(usersCount));
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with recordCount method.");
+                    }
+                    logsTable.repaint(); // This is to reload the current table and show new data
+
+                } else if (comboProgram.getSelectedItem().toString().equals("PROGRAM")
+                        && !comboYrLvl.getSelectedItem().toString().equals("YEAR LEVEL")) {
+
+                    System.out.println("may year level");
+                    List<UserLogsDTO> filteredUsers;
+
+                    try {
+                        filteredUsers = usersAccessObj.filterTable(filterYearlevel, start, end);
+                        filterLogs.setRowCount(0); // This is to reset the current table
+                        if (filteredUsers != null) {
+                            for (UserLogsDTO acct : filteredUsers) {
+                                Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getReason(), acct.getLoginTime(), acct.getLogoutTime()};
+                                filterLogs.addRow(logsRow);
+                            }
+                        } else {
+                            System.out.println("No data to be shown here!");
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with filterTable method");
+                    }
+
+                    // Re-assiging text to our data counter
+                    try {
+                        usersCount = usersAccessObj.recordCount(filterYearlevel, start, end);
+                        totalRecordCountValue.setText("Total Record Count: " + String.valueOf(usersCount));
+                        System.out.println(String.valueOf(usersCount));
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with recordCount method.");
+                    }
+
+                    logsTable.repaint(); // This is to reload the current table and show new data
+                } else {
+
+                    // Proceeds here if Gender and Municipality are default
+                    // We will reload the Custom JTable here with new data from filtering
+                    List<UserLogsDTO> filteredUsers;
+
+                    try {
+                        filteredUsers = usersAccessObj.filterTable(start, end);
+                        filterLogs.setRowCount(0); // This is to reset the current table
+                        if (filteredUsers != null) {
+                            for (UserLogsDTO acct : filteredUsers) {
+                                Object[] logsRow = {acct.getRole(), acct.getFullname(), acct.getProgram(), acct.getYrlvl(), acct.getReason(), acct.getLoginTime(), acct.getLogoutTime()};
+                                filterLogs.addRow(logsRow);
+                            }
+                        } else {
+                            System.out.println("No data to be shown here!");
+                        }
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with filterTable method");
+                    }
+
+                    // Re-assiging text to our data counter
+                    try {
+                        usersCount = usersAccessObj.recordCount(start, end);
+                        totalRecordCountValue.setText("Total Record Count: " + String.valueOf(usersCount));
+                        System.out.println(String.valueOf(usersCount));
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(jPanel1, "Something went wrong with recordCount method.");
+                    }
+
+                    logsTable.repaint(); // This is to reload the current table and show new data
+                    JOptionPane.showMessageDialog(jPanel1, "else block was used");
+                }
+            } else {
+                System.out.println("Don't get the date !");
+            }
+
+        } else {
+            if (startDateChooser.getDate() == null) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Select Start Date");
+            } else if (endDateChooser.getDate() == null) {
+                JOptionPane.showMessageDialog(jPanel1, "Please Select End Date");
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramActionPerformed
+        ComboBoxContentProgram dialog = new ComboBoxContentProgram(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnProgramActionPerformed
+
+    private void btnYearLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearLevelActionPerformed
+        ComboBoxContentYearLevel dialog = new ComboBoxContentYearLevel(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnYearLevelActionPerformed
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        comboProgram.setSelectedIndex(0);
+        comboYrLvl.setSelectedIndex(0);
+        startDateChooser.setCalendar(null);
+        endDateChooser.setCalendar(null);
+        displayLogs();
+    }//GEN-LAST:event_btnClearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1057,16 +1371,23 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane adminPane;
     private javax.swing.JButton btnAddFacultyAccount;
     private javax.swing.JButton btnAddStudentAcct;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeleteAdminAcct;
     private javax.swing.JButton btnDeleteFacultyAcct;
     private javax.swing.JButton btnDeleteStuAcct;
+    private javax.swing.JButton btnProgram;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
     private javax.swing.JButton btnUpdateStudentAccount;
+    private javax.swing.JButton btnYearLevel;
     private javax.swing.JPanel cardPanel;
+    private javax.swing.JComboBox<String> comboProgram;
+    private javax.swing.JComboBox<String> comboYrLvl;
+    private com.toedter.calendar.JDateChooser endDateChooser;
     private javax.swing.JScrollPane facultyAcctPane;
     private final javax.swing.JTable facultyAcctTable = new javax.swing.JTable();
     private javax.swing.JPanel homePage;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1083,9 +1404,11 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel lblAdminsName;
     private javax.swing.JLabel lblAllLogs;
     private javax.swing.JLabel lblDashboard;
+    private javax.swing.JLabel lblEnd;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblLogout;
     private javax.swing.JLabel lblNumberOfActive;
+    private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblTopFiveLogs;
     private javax.swing.JLabel lblTotalNumberUsers;
     private javax.swing.JPanel logsPage;
@@ -1106,8 +1429,10 @@ public class AdminDashboard extends javax.swing.JFrame {
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelLogout;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelLogs;
     private javax.swing.JScrollPane scroll;
+    private com.toedter.calendar.JDateChooser startDateChooser;
     private javax.swing.JScrollPane studentAcctPane;
     private javax.swing.JTable studentAcctTable;
+    private javax.swing.JLabel totalRecordCountValue;
     private javax.swing.JTextField txtAdminSearchAcct;
     private javax.swing.JTextField txtFacultySearchAcct;
     private javax.swing.JTextField txtSearchLogs;

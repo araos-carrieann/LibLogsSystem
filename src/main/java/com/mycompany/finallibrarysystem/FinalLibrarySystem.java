@@ -11,6 +11,7 @@ package com.mycompany.finallibrarysystem;
 public class FinalLibrarySystem {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        AdminDashboard admn = new AdminDashboard("cn", "shgsdg");
+        admn.setVisible(true);
     }
 }

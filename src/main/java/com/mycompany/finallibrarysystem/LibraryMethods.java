@@ -237,32 +237,50 @@ public class LibraryMethods {
     }
 
     //Comboxes
-    // Adds a program option to the program combobox in the database
-    public static void programComboBox(String prog) {
-        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
-            // Create the "program" table if it doesn't exist
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS program (program VARCHAR(100))";
+    public static void createTableProgram() {
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS program (program VARCHAR(100))";
 
-            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
-                // Execute the query to create the "program" table
-                statement.execute();
-            }
-
-            // Insert the new program option into the "program" table
-            String insertProgramQuery = "INSERT INTO program (program) VALUES (?)";
-            try (PreparedStatement insertStatement = conn.prepareStatement(insertProgramQuery)) {
-                // Set the program name as a parameter in the insert query
-                insertStatement.setString(1, prog);
-                // Execute the query to insert the program into the table
-                insertStatement.executeUpdate();
-            }
-
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+            // Execute the query to create the "program" table
+            statement.execute();
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
     }
-    // Retrieves the content of the program combobox from the "program" table in the database
 
+    // Adds a program option to the program combobox in the database
+    public static boolean addProgramComboBox(String prog) {
+        createTableProgram();
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            String checkProgQuery = "SELECT * FROM program WHERE program = ?";
+            try (PreparedStatement selectStatement = conn.prepareStatement(checkProgQuery)) {
+                selectStatement.setString(1, prog);
+                ResultSet resultSet = selectStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Program already exists in the table
+                    return false;
+                } else {
+                    // Insert the new program option into the "program" table
+                    String insertProgramQuery = "INSERT INTO program (program) VALUES (?)";
+
+                    try (PreparedStatement insertStatement = conn.prepareStatement(insertProgramQuery)) {
+                        // Set the program name as a parameter in the insert query
+                        insertStatement.setString(1, prog);
+                        // Execute the query to insert the program into the table
+                        insertStatement.executeUpdate();
+                        return true; // Program successfully added
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+
+        return true; // Default return if an exception occurs
+    }
+
+    // Retrieves the content of the program combobox from the "program" table in the database
     public static List<AccountsDTO> programComboContent() {
         // Create an empty list to store the retrieved program options
         List<AccountsDTO> programList = new ArrayList<>();
@@ -287,7 +305,7 @@ public class LibraryMethods {
 
     // Deletes a program option from the "program" table in the database
     public static void deleteProgram(String program) {
-        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection()) {
             // Prepare the SQL delete query
             String sql = "DELETE FROM program WHERE program = ?";
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -302,26 +320,49 @@ public class LibraryMethods {
         }
     }
 
-    // Adds a year level option to the year level combobox in the database
-    public static void yearLevelComboBox(String lvl) {
-        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+    public static void createYearLevelTable() {
+        try (Connection conn = DatabaseConnector.getConnection()) {
             // Create the "yearLevel" table if it doesn't exist
             String createTableQuery = "CREATE TABLE IF NOT EXISTS yearLevel (yearLevel VARCHAR(10))";
             try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
                 // Execute the query to create the "yearLevel" table
                 statement.execute();
             }
-            // Insert the new year level option into the "yearLevel" table
-            String insertYrLvlQuery = "INSERT INTO yearLevel (yearLevel) VALUES (?)";
-            try (PreparedStatement insertStatement = conn.prepareStatement(insertYrLvlQuery)) {
-                // Set the year level as a parameter in the insert query
-                insertStatement.setString(1, lvl);
-                // Execute the query to insert the year level into the table
-                insertStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
+        }
+    }
+
+    // Adds a year level option to the year level combobox in the database
+    public static boolean addYearLevelComboBox(String lvl) {
+        createYearLevelTable();
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            String checkYrQuery = "SELECT * FROM yearLevel WHERE yearLevel = ?";
+            try (PreparedStatement selectStatement = conn.prepareStatement(checkYrQuery)) {
+                selectStatement.setString(1, lvl);
+                ResultSet resultSet = selectStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Year level already exists in the table
+                    return false;
+                } else {
+                    // Insert the new year level option into the "yearLevel" table
+                    String insertYrLvlQuery = "INSERT INTO yearLevel (yearLevel) VALUES (?)";
+                    try (PreparedStatement insertStatement = conn.prepareStatement(insertYrLvlQuery)) {
+                        // Set the year level as a parameter in the insert query
+                        insertStatement.setString(1, lvl);
+                        // Execute the query to insert the year level into the table
+                        insertStatement.executeUpdate();
+                        return true;
+                    }
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
+
+        return false; // Default return if an exception occurs
+
     }
 
     // Retrieves the content of the year level combobox from the "yearLevel" table in the database
@@ -346,7 +387,7 @@ public class LibraryMethods {
 
     // Deletes a year level option from the "yearLevel" table in the database
     public static void deleteYearLvl(String yrLvl) {
-        try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DatabaseConnector.getConnection()) {
             // Prepare the SQL delete query
             String sql = "DELETE FROM yearLevel WHERE yearLevel = ?";
             PreparedStatement statement = conn.prepareStatement(sql);

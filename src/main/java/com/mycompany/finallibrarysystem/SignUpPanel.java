@@ -254,7 +254,7 @@ public class SignUpPanel extends javax.swing.JPanel {
                     role = rbtnStudent.getText();
                     boolean success = LibraryMethods.registerUser(status, role, studentFacultyID, firstName, lastName, email, program, yearLevel);
                     if (success) {
-                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
                         lblWarningMsg.setText("User registered successfully.");
                     } else {
                         lblWarningMsg.setText("User registration failed. Account already exists.");

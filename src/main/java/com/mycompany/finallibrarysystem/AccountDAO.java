@@ -16,9 +16,9 @@ import java.sql.Statement;
  */
 public class AccountDAO {
 
-    public static String updateAccount(int id, String role, String stuFaculID, String firstName, String lastName, String email, String program, String yrLvl, String department) {
+    public static String updateAccount(int id, String role, String stuFaculID, String firstName, String lastName, String email, String program, String yrLvl) {
         String message = null;
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT * FROM users WHERE studentFacultyID = ? AND id <> ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET studentFacultyID = ?, role = ?, firstName = ?, lastName = ?, email = ?, program = ?, yearLvl = ?, department = ? WHERE id = ?")) {
+        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT * FROM users WHERE studentFacultyID = ? AND id <> ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET studentFacultyID = ?, role = ?, firstName = ?, lastName = ?, email = ?, program = ?, yearLvl = ? WHERE id = ?")) {
 
             // Set parameters for the SELECT statement
             selectStmt.setString(1, stuFaculID);
@@ -39,8 +39,7 @@ public class AccountDAO {
                 updateStmt.setString(5, email);
                 updateStmt.setString(6, program);
                 updateStmt.setString(7, yrLvl);
-                updateStmt.setString(8, department);
-                updateStmt.setInt(9, id);
+                updateStmt.setInt(8, id);
 
                 // Execute the UPDATE statement
                 updateStmt.executeUpdate();

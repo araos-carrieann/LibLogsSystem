@@ -4,6 +4,8 @@
  */
 package com.mycompany.finallibrarysystem;
 
+import java.sql.Date;
+
 /**
  *
  * @author araos
@@ -23,9 +25,10 @@ public class UserLogsDTO {
     private String program;
     private String yrlvl;
     private String reason;
-    private String loginTime;
-    private String logoutTime;
+    private Date loginTime;
+    private Date logoutTime;
     private String email;
+    
 
     public UserLogsDTO(String studentfacultyID, String firstName, String lastName, String email) {
         this.studentfacultyID = studentfacultyID;
@@ -34,7 +37,7 @@ public class UserLogsDTO {
         this.email = email;
     }
     
-    public UserLogsDTO(String role, String fullname, String program, String yrlvl, String reason, String loginTime, String logoutTime) {
+    public UserLogsDTO(String role, String fullname, String program, String yrlvl, String reason, Date loginTime, Date logoutTime) {
         this.role = role;
         this.fullname = fullname;
         this.program = program;
@@ -156,19 +159,19 @@ public class UserLogsDTO {
         this.reason = reason;
     }
 
-    public String getLoginTime() {
+    public Date getLoginTime() {
         return loginTime;
     }
 
-    public void setLoginTime(String loginTime) {
+    public void setLoginTime(Date loginTime) {
         this.loginTime = loginTime;
     }
 
-    public String getLogoutTime() {
+    public Date getLogoutTime() {
         return logoutTime;
     }
 
-    public void setLogoutTime(String logoutTime) {
+    public void setLogoutTime(Date logoutTime) {
         this.logoutTime = logoutTime;
     }
 

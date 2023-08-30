@@ -219,9 +219,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         scroll = new javax.swing.JScrollPane();
         mostLogsTable = new javax.swing.JTable();
         panelBorder3 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        activeUserNow = new javax.swing.JTable();
         panelBorder5 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblTotalNumberUsers = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -229,11 +226,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblNumberOfActive = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        btnProgram = new javax.swing.JButton();
-        btnYearLevel = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        activeUserNow = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
         panelBorder4 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblAdminsName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        panelBorder10 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        btnProgram = new javax.swing.JButton();
+        btnYearLevel = new javax.swing.JButton();
         accountPage = new javax.swing.JPanel();
         panelBorder8 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -244,18 +245,18 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnUpdateStudentAccount = new javax.swing.JButton();
         studentAcctPane = new javax.swing.JScrollPane();
         studentAcctTable = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        btnUpdateAdminAcct = new javax.swing.JButton();
-        txtAdminSearchAcct = new javax.swing.JTextField();
-        btnDeleteAdminAcct = new javax.swing.JButton();
-        adminPane = new javax.swing.JScrollPane();
-        adminAccountTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         txtFacultySearchAcct = new javax.swing.JTextField();
         btnAddFacultyAccount = new javax.swing.JButton();
         btnDeleteFacultyAcct = new javax.swing.JButton();
         btnUpdateFacultyAcct = new javax.swing.JButton();
         facultyAcctPane = new javax.swing.JScrollPane();
+        jPanel3 = new javax.swing.JPanel();
+        btnUpdateAdminAcct = new javax.swing.JButton();
+        txtAdminSearchAcct = new javax.swing.JTextField();
+        btnDeleteAdminAcct = new javax.swing.JButton();
+        adminPane = new javax.swing.JScrollPane();
+        adminAccountTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         logsPage = new javax.swing.JPanel();
         panelBorder9 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
@@ -288,7 +289,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblDashboard.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblDashboard.setForeground(new java.awt.Color(255, 223, 0));
-        lblDashboard.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\dashboard_icon.png")); // NOI18N
+        lblDashboard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/HOMEdashboard_icon.png"))); // NOI18N
         lblDashboard.setText("DASHBOARD");
         lblDashboard.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -311,7 +312,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblAccounts.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAccounts.setForeground(new java.awt.Color(255, 223, 0));
-        lblAccounts.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\users_icon.png")); // NOI18N
+        lblAccounts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/HOMEusers_icon.png"))); // NOI18N
         lblAccounts.setText("ACCOUNTS");
         lblAccounts.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -334,7 +335,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         lblAllLogs.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblAllLogs.setForeground(new java.awt.Color(255, 223, 0));
-        lblAllLogs.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-logs-64.png")); // NOI18N
+        lblAllLogs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/HOMElogs_icon.png"))); // NOI18N
         lblAllLogs.setText("LOGS");
         lblAllLogs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -355,8 +356,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelLogout.setBackground(new java.awt.Color(128, 0, 0));
         panelLogout.setLayout(new java.awt.GridLayout(1, 0));
 
-        lblLogout.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblLogout.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         lblLogout.setForeground(new java.awt.Color(255, 223, 0));
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/HOMElogout_icon.png"))); // NOI18N
         lblLogout.setText("LOGOUT");
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -393,13 +395,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblTopFiveLogs.setForeground(new java.awt.Color(255, 255, 255));
         lblTopFiveLogs.setText("TOP 5 MOST LOGS");
         panelBorder2.add(lblTopFiveLogs);
-        lblTopFiveLogs.setBounds(20, 20, 250, 29);
+        lblTopFiveLogs.setBounds(10, 10, 250, 29);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         scroll.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         scroll.setRowHeaderView(null);
 
+        mostLogsTable.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         mostLogsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -430,18 +433,47 @@ public class AdminDashboard extends javax.swing.JFrame {
         scroll.setViewportView(mostLogsTable);
 
         panelBorder2.add(scroll);
-        scroll.setBounds(10, 60, 400, 210);
+        scroll.setBounds(10, 50, 430, 170);
 
-        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 420, 280));
+        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 450, 230));
 
         panelBorder3.setBackground(new java.awt.Color(128, 0, 0));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 450, 300));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ACTIVE NOW");
-        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
 
+        lblTotalNumberUsers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblTotalNumberUsers.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalNumberUsers.setText("0");
+        panelBorder5.add(lblTotalNumberUsers);
+        lblTotalNumberUsers.setBounds(110, 0, 110, 100);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardActiveUser.png"))); // NOI18N
+        panelBorder5.add(jLabel2);
+        jLabel2.setBounds(30, 0, 100, 100);
+
+        homePage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 229, 105));
+
+        panelBorder6.setBackground(new java.awt.Color(128, 0, 0));
+
+        lblNumberOfActive.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblNumberOfActive.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumberOfActive.setText("0");
+        panelBorder6.add(lblNumberOfActive);
+        lblNumberOfActive.setBounds(110, 0, 110, 100);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardRegisteredUserIcon.png"))); // NOI18N
+        panelBorder6.add(jLabel4);
+        jLabel4.setBounds(30, 0, 70, 100);
+
+        homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 229, 105));
+
+        panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
+
+        activeUserNow.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         activeUserNow.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -469,61 +501,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         activeUserNow.setShowGrid(true);
         jScrollPane2.setViewportView(activeUserNow);
 
-        panelBorder3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 340));
+        panelBorder7.add(jScrollPane2);
+        jScrollPane2.setBounds(10, 50, 450, 260);
 
-        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 500, 420));
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ACTIVE NOW");
+        panelBorder7.add(jLabel3);
+        jLabel3.setBounds(10, 10, 164, 29);
 
-        panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
-
-        lblTotalNumberUsers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        lblTotalNumberUsers.setForeground(new java.awt.Color(255, 255, 255));
-        lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTotalNumberUsers.setText("0");
-        panelBorder5.add(lblTotalNumberUsers);
-        lblTotalNumberUsers.setBounds(110, 0, 110, 100);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-checked-user-male-50.png")); // NOI18N
-        panelBorder5.add(jLabel2);
-        jLabel2.setBounds(30, 0, 100, 100);
-
-        homePage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 230, 100));
-
-        panelBorder6.setBackground(new java.awt.Color(128, 0, 0));
-
-        lblNumberOfActive.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        lblNumberOfActive.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNumberOfActive.setText("0");
-        panelBorder6.add(lblNumberOfActive);
-        lblNumberOfActive.setBounds(110, 0, 110, 100);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\icons8-user-online-50 (1).png")); // NOI18N
-        panelBorder6.add(jLabel4);
-        jLabel4.setBounds(30, 0, 70, 100);
-
-        homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 100));
-
-        panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
-
-        btnProgram.setText("jButton2");
-        btnProgram.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProgramActionPerformed(evt);
-            }
-        });
-        panelBorder7.add(btnProgram);
-        btnProgram.setBounds(50, 50, 75, 23);
-
-        btnYearLevel.setText("jButton3");
-        btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnYearLevelActionPerformed(evt);
-            }
-        });
-        panelBorder7.add(btnYearLevel);
-        btnYearLevel.setBounds(50, 120, 75, 23);
-
-        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 410, 230));
+        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 470, 320));
 
         panelBorder4.setBackground(new java.awt.Color(128, 0, 0));
 
@@ -540,6 +527,30 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
         jLabel1.setText("DASHBOARD");
         homePage.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        panelBorder10.setBackground(new java.awt.Color(128, 0, 0));
+
+        btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnProgram.setText("PROGRAM");
+        btnProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProgramActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnProgram);
+        btnProgram.setBounds(40, 40, 160, 40);
+
+        btnYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnYearLevel.setText("YEAR LEVEL");
+        btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYearLevelActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnYearLevel);
+        btnYearLevel.setBounds(270, 40, 160, 40);
+
+        homePage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 470, 98));
 
         cardPanel.add(homePage, "card2");
 
@@ -592,6 +603,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateStudentAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update_icon.png"))); // NOI18N
         btnUpdateStudentAccount.setText("UPDATE");
+        btnUpdateStudentAccount.setEnabled(false);
         btnUpdateStudentAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateStudentAccountActionPerformed(evt);
@@ -668,13 +680,90 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("STUDENT", jPanel2);
 
+        jPanel4.setBackground(new java.awt.Color(128, 0, 0));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtFacultySearchAcct.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFacultySearchAcct.setText("Search");
+        txtFacultySearchAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFacultySearchAcctActionPerformed(evt);
+            }
+        });
+        txtFacultySearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFacultySearchAcctKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 390, 40));
+
+        btnAddFacultyAccount.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddFacultyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_user.png"))); // NOI18N
+        btnAddFacultyAccount.setText("ADD USER");
+        btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFacultyAccountActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnAddFacultyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
+
+        btnDeleteFacultyAcct.setBackground(new java.awt.Color(255, 51, 51));
+        btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteFacultyAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
+        btnDeleteFacultyAcct.setText("DELETE");
+        btnDeleteFacultyAcct.setEnabled(false);
+        btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteFacultyAcctActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+
+        btnUpdateFacultyAcct.setBackground(new java.awt.Color(51, 102, 255));
+        btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnUpdateFacultyAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update_icon.png"))); // NOI18N
+        btnUpdateFacultyAcct.setText("UPDATE");
+        btnUpdateFacultyAcct.setEnabled(false);
+        btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateFacultyAcctActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
+            }
+        ));
+        facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        facultyAcctTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                facultyAcctTableMouseClicked(evt);
+            }
+        });
+        facultyAcctPane.setViewportView(facultyAcctTable);
+
+        jPanel4.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 400));
+
+        jTabbedPane1.addTab("FACULTY", jPanel4);
+
         jPanel3.setBackground(new java.awt.Color(128, 0, 0));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnUpdateAdminAcct.setBackground(new java.awt.Color(51, 102, 255));
         btnUpdateAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnUpdateAdminAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update_icon.png"))); // NOI18N
         btnUpdateAdminAcct.setText("UPDATE");
+        btnUpdateAdminAcct.setEnabled(false);
         btnUpdateAdminAcct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateAdminAcctActionPerformed(evt);
@@ -694,7 +783,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtAdminSearchAcctKeyReleased(evt);
             }
         });
-        jPanel3.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 390, 40));
+        jPanel3.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 390, 40));
 
         btnDeleteAdminAcct.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -734,86 +823,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         adminPane.setViewportView(adminAccountTable);
 
-        jPanel3.add(adminPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 400));
+        jPanel3.add(adminPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 380));
 
         jTabbedPane1.addTab("ADMIN", jPanel3);
 
-        jPanel4.setBackground(new java.awt.Color(128, 0, 0));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtFacultySearchAcct.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtFacultySearchAcct.setText("Search");
-        txtFacultySearchAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFacultySearchAcctActionPerformed(evt);
-            }
-        });
-        txtFacultySearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFacultySearchAcctKeyReleased(evt);
-            }
-        });
-        jPanel4.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 20, 390, 40));
-
-        btnAddFacultyAccount.setBackground(new java.awt.Color(204, 255, 204));
-        btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddFacultyAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_user.png"))); // NOI18N
-        btnAddFacultyAccount.setText("ADD USER");
-        btnAddFacultyAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFacultyAccountActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnAddFacultyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
-
-        btnDeleteFacultyAcct.setBackground(new java.awt.Color(255, 51, 51));
-        btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteFacultyAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
-        btnDeleteFacultyAcct.setText("DELETE");
-        btnDeleteFacultyAcct.setEnabled(false);
-        btnDeleteFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteFacultyAcctActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
-
-        btnUpdateFacultyAcct.setBackground(new java.awt.Color(51, 102, 255));
-        btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnUpdateFacultyAcct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/update_icon.png"))); // NOI18N
-        btnUpdateFacultyAcct.setText("UPDATE");
-        btnUpdateFacultyAcct.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateFacultyAcctActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-
-        facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
-            }
-        ));
-        facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        facultyAcctTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                facultyAcctTableMouseClicked(evt);
-            }
-        });
-        facultyAcctPane.setViewportView(facultyAcctTable);
-
-        jPanel4.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 400));
-
-        jTabbedPane1.addTab("FACULTY", jPanel4);
-
         panelBorder8.add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 10, 920, 520);
+        jTabbedPane1.setBounds(0, 0, 940, 550);
 
         accountPage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 940, 550));
 
@@ -936,7 +951,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 33, Short.MAX_VALUE))
         );
 
         pack();
@@ -1015,6 +1030,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void studentAcctTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentAcctTableMouseClicked
         btnDeleteStuAcct.setEnabled(true);
+        btnUpdateStudentAccount.setEnabled(true);
     }//GEN-LAST:event_studentAcctTableMouseClicked
 
     private void btnAddStudentAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddStudentAcctActionPerformed
@@ -1051,7 +1067,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             updateDialog.setStudentData(id, studentID, email, firstName, lastName, program, yearLevel);
             updateDialog.setVisible(true);
             displayStudentAccount();
-            System.out.println("bakit ayaw?");
+            btnUpdateStudentAccount.setEnabled(false);
         }
         displayStudentAccount();
         displayFacultyAccount();
@@ -1093,6 +1109,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void facultyAcctTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_facultyAcctTableMouseClicked
         btnDeleteFacultyAcct.setEnabled(true);
+        btnUpdateFacultyAcct.setEnabled(true);
     }//GEN-LAST:event_facultyAcctTableMouseClicked
 
     private void btnUpdateFacultyAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateFacultyAcctActionPerformed
@@ -1111,6 +1128,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setFacultyData(id, facultyAdminID, department, email, firstName, lastName);
             updateDialog.setVisible(true);
+             btnUpdateFacultyAcct.setEnabled(false);
+            
         }
         displayStudentAccount();
         displayFacultyAccount();
@@ -1119,6 +1138,7 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void adminAccountTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminAccountTableMouseClicked
         btnDeleteAdminAcct.setEnabled(true);
+        btnUpdateAdminAcct.setEnabled(true);
     }//GEN-LAST:event_adminAccountTableMouseClicked
 
     private void btnDeleteAdminAcctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteAdminAcctActionPerformed
@@ -1159,6 +1179,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setAdminData(id, facultyAdminID, firstName, lastName, email);
             updateDialog.setVisible(true);
+            btnUpdateAdminAcct.setEnabled(false);
         }
         displayStudentAccount();
         displayFacultyAccount();
@@ -1417,6 +1438,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTable mostLogsTable;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelAccounts;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelBorder1;
+    private com.mycompany.finallibrarysystem.Design.PanelBorder panelBorder10;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelBorder2;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelBorder3;
     private com.mycompany.finallibrarysystem.Design.PanelBorder panelBorder4;

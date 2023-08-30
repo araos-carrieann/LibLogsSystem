@@ -106,9 +106,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         jPanel1.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 279, -1));
 
         txtFirstName.setBackground((new Color(0, 0, 0, 0)));
-        txtFirstName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtFirstName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         txtFirstName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFirstName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtFirstName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtFirstName.setPreferredSize(new java.awt.Dimension(90, 22));
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,9 +118,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 160, 40));
 
         txtLastName.setBackground((new Color(0, 0, 0, 0)));
-        txtLastName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtLastName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         txtLastName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtLastName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtLastName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtLastName.setPreferredSize(new java.awt.Dimension(90, 22));
         txtLastName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,9 +130,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 150, 40));
 
         txtEmail.setBackground((new Color(0, 0, 0, 0)));
-        txtEmail.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtEmail.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtEmail.setPreferredSize(new java.awt.Dimension(90, 22));
         jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 310, 40));
 
@@ -182,9 +182,9 @@ public class SignUpPanel extends javax.swing.JPanel {
         jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 420, -1));
 
         txtStudentFacultyID.setBackground((new Color(0, 0, 0, 0)));
-        txtStudentFacultyID.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        txtStudentFacultyID.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
+        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(90, 22));
         txtStudentFacultyID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

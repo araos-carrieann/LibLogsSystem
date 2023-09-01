@@ -8,8 +8,6 @@ import java.awt.Color;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -219,6 +217,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         scroll = new javax.swing.JScrollPane();
         mostLogsTable = new javax.swing.JTable();
         panelBorder3 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        activeUserNow = new javax.swing.JTable();
         panelBorder5 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblTotalNumberUsers = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -226,9 +227,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblNumberOfActive = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        activeUserNow = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
+        chart2 = new CustomPieChart.Chart();
         panelBorder4 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblAdminsName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -275,7 +274,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
         setSize(new java.awt.Dimension(1200, 700));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -439,6 +437,49 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         panelBorder3.setBackground(new java.awt.Color(128, 0, 0));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("ACTIVE NOW");
+        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, -1));
+
+        activeUserNow.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
+        activeUserNow.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "NAME", "PROGRAM", "YEAR LEVEL"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        activeUserNow.setEnabled(false);
+        activeUserNow.setOpaque(false);
+        activeUserNow.setRowHeight(22);
+        activeUserNow.setSelectionBackground(new java.awt.Color(55, 126, 249));
+        activeUserNow.setShowGrid(true);
+        jScrollPane2.setViewportView(activeUserNow);
+        if (activeUserNow.getColumnModel().getColumnCount() > 0) {
+            activeUserNow.getColumnModel().getColumn(0).setResizable(false);
+            activeUserNow.getColumnModel().getColumn(1).setResizable(false);
+            activeUserNow.getColumnModel().getColumn(1).setPreferredWidth(30);
+            activeUserNow.getColumnModel().getColumn(2).setResizable(false);
+            activeUserNow.getColumnModel().getColumn(2).setPreferredWidth(30);
+        }
+
+        panelBorder3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 430, 250));
+
         homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 450, 300));
 
         panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
@@ -472,43 +513,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 229, 105));
 
         panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
-
-        activeUserNow.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
-        activeUserNow.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "NAME", "PROGRAM", "YEAR LEVEL"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        activeUserNow.setEnabled(false);
-        activeUserNow.setOpaque(false);
-        activeUserNow.setRowHeight(22);
-        activeUserNow.setSelectionBackground(new java.awt.Color(55, 126, 249));
-        activeUserNow.setShowGrid(true);
-        jScrollPane2.setViewportView(activeUserNow);
-
-        panelBorder7.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 50, 450, 260);
-
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ACTIVE NOW");
-        panelBorder7.add(jLabel3);
-        jLabel3.setBounds(10, 10, 164, 29);
+        panelBorder7.add(chart2);
+        chart2.setBounds(20, 20, 440, 294);
 
         homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 470, 320));
 
@@ -1402,6 +1408,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateStudentAccount;
     private javax.swing.JButton btnYearLevel;
     private javax.swing.JPanel cardPanel;
+    private CustomPieChart.Chart chart2;
     private javax.swing.JComboBox<String> comboProgram;
     private javax.swing.JComboBox<String> comboYrLvl;
     private com.toedter.calendar.JDateChooser endDateChooser;

@@ -232,6 +232,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         yearLevel = (String) comboYrLvl.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png")));
         if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
             lblWarningMsg.setText("Please input all required fields.");
         } else if (studentFacultyID.isEmpty()) {

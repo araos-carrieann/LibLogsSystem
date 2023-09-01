@@ -210,6 +210,7 @@ public class AddAccount extends javax.swing.JDialog {
         yearLevel = (String) comboYrLvl.getSelectedItem();
 
         lblWarningMsg.setVisible(true);
+        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png")));
         if (stuFaculID.isEmpty() && fname.isEmpty() && lname.isEmpty() && email.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
             lblWarningMsg.setText("Please input all required fields.");
         } else if (stuFaculID.isEmpty()) {
@@ -265,7 +266,6 @@ public class AddAccount extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLnameActionPerformed
 
-  
     private String stuFaculID, status, fname, lname, role, email, program, yearLevel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;

@@ -270,8 +270,6 @@ public class SignUpPanel extends javax.swing.JPanel {
                 if (success) {
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
                     lblWarningMsg.setText("User registered successfully.");
-                    btnSignIn.setEnabled(false);
-                    btnClear.setEnabled(false);
                 } else {
                     lblWarningMsg.setText("User registration failed. Account already exists.");
                     System.out.println("failed");

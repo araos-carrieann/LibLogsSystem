@@ -26,6 +26,7 @@ public class Chart extends javax.swing.JPanel {
     public Chart() {
         initComponents();
         contentComboYearLvl();
+        showAllData();
     }
 
     /**
@@ -40,6 +41,7 @@ public class Chart extends javax.swing.JPanel {
         pieChart1 = new CustomPieChart.PieChart();
         comboYrLvl = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(128, 0, 0));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(pieChart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 34, 450, 280));
 
@@ -59,6 +61,36 @@ public class Chart extends javax.swing.JPanel {
 
         for (AccountsDTO data : yrLvlList) {
             comboYrLvl.addItem(data.getYrlvl());
+        }
+    }
+
+    private void showAllData() {
+        try {
+            pieChart1.clearData();
+            String sql = """
+                         SELECT 
+                                users.program,
+                                COUNT(logs.logID) AS logs_count
+                            FROM
+                                users
+                            RIGHT JOIN
+                                logs
+                                ON logs.user_id_users = users.id
+                            WHERE
+                                users.program IS NOT NULL
+                                AND logs.login_time >= CURRENT_TIMESTAMP - INTERVAL '3 months'
+                            GROUP BY
+                                users.program;""";
+            PreparedStatement pstmt = DatabaseConnector.getConnection().prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            int index = 0;
+            while (rs.next()) {
+                String program = rs.getString("program");
+                int logs_count = rs.getInt("logs_count");
+                pieChart1.addData(new ModelPieChart(program, logs_count, getColor(index++)));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -101,8 +133,13 @@ public class Chart extends javax.swing.JPanel {
     }
 
     private void comboYrLvlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboYrLvlActionPerformed
-        if (comboYrLvl.getSelectedIndex() >= 1) {
-            showData(comboYrLvl.getSelectedItem().toString());
+        if (comboYrLvl.getSelectedIndex() >= 0) {
+            String selected = comboYrLvl.getSelectedItem().toString();
+            if (selected.equals("YEAR LEVEL")) {
+                showAllData();
+            } else {
+                showData(selected);
+            }
         }
     }//GEN-LAST:event_comboYrLvlActionPerformed
 

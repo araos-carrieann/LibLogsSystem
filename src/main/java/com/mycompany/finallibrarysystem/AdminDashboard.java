@@ -227,7 +227,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblNumberOfActive = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        chart2 = new CustomPieChart.Chart();
+        chart1 = new CustomPieChart.Chart();
         panelBorder4 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblAdminsName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -377,7 +377,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/PUPLogo_icon.png"))); // NOI18N
         panelBorder1.add(lblLogo);
-        lblLogo.setBounds(0, 0, 210, 180);
+        lblLogo.setBounds(0, 20, 210, 180);
 
         jPanel1.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 210, 650));
 
@@ -513,8 +513,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 229, 105));
 
         panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
-        panelBorder7.add(chart2);
-        chart2.setBounds(20, 20, 440, 294);
+        panelBorder7.add(chart1);
+        chart1.setBounds(10, 4, 450, 310);
 
         homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 470, 320));
 
@@ -949,15 +949,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 13, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1187, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 33, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -1408,7 +1406,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdateStudentAccount;
     private javax.swing.JButton btnYearLevel;
     private javax.swing.JPanel cardPanel;
-    private CustomPieChart.Chart chart2;
+    private CustomPieChart.Chart chart1;
     private javax.swing.JComboBox<String> comboProgram;
     private javax.swing.JComboBox<String> comboYrLvl;
     private com.toedter.calendar.JDateChooser endDateChooser;

@@ -130,7 +130,8 @@ public class LoginPanel extends javax.swing.JPanel {
                 System.out.print(timeinTimeoutChecker);
                 if (status.equals("ACTIVE")) {
                     if (userRole.equals("ADMIN")) {
-                        if (!UserLogsDAO.checkLogs(sfID)) {
+                        if (timeinTimeoutChecker) {
+                            System.out.print("CNNNN");
                             LibraryMethods.logUserLogin(sfID, fullName, null);
                         } else {
                             lblWarningMsg.setText("This Account is still online");

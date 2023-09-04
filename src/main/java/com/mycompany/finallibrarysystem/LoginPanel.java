@@ -46,7 +46,8 @@ public class LoginPanel extends javax.swing.JPanel {
         panelGradient1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtStudentFacultyID.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "STUDENT / FACULTY ID", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 1, 14))); // NOI18N
         txtStudentFacultyID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtStudentFacultyIDMouseClicked(evt);
@@ -60,7 +61,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 comboBoxReasonActionPerformed(evt);
             }
         });
-        panelGradient1.add(comboBoxReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 300, -1));
+        panelGradient1.add(comboBoxReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 292, 300, 30));
 
         btnLogin.setBackground(new java.awt.Color(51, 51, 255));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -61,7 +63,8 @@ public class UserLogsDAO {
                 + "ON\n"
                 + "    logs.user_id_users = users.id\n"
                 + "WHERE\n"
-                + "    users.role = 'STUDENT' OR users.role = 'FACULTY' OR users.role = 'ADMIN'\n"
+                + "    users.role IN ('STUDENT', 'FACULTY', 'ADMIN')\n"
+                + "    AND logs.login_time >= CURRENT_TIMESTAMP - INTERVAL '3 months'\n"
                 + "ORDER BY\n"
                 + "    logs.login_time DESC;"); // Execute the query and retrieve the ResultSet
                  ResultSet rsltSet = stmt.executeQuery()) {
@@ -72,8 +75,8 @@ public class UserLogsDAO {
                 String userFullname = rsltSet.getString("fullname");
                 String userProgram = rsltSet.getString("program");
                 String userYrlvl = rsltSet.getString("yearlvl");
-                Date userLogin = rsltSet.getDate("login_time");
-                Date userLogout = rsltSet.getDate("logout_time");
+                Timestamp userLogin = rsltSet.getTimestamp("login_time");
+                Timestamp userLogout = rsltSet.getTimestamp("logout_time");
                 String userReason = rsltSet.getString("reason");
 
                 // Create a LogsDTO object and add it to the dataList
@@ -143,8 +146,8 @@ public class UserLogsDAO {
                 "SELECT\n"
                 + "    logs.fullname,\n"
                 + "    logs.reason,\n"
-                + "    logs.login_time,\n"
-                + "    logs.logout_time,\n"
+                + "    TO_CHAR(logs.login_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_login_time,\n"
+                + "    TO_CHAR(logs.logout_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_logout_time,\n"
                 + "    users.studentfacultyID AS sfID,\n"
                 + "    users.role AS userRole,\n"
                 + "    users.program,\n"
@@ -157,7 +160,9 @@ public class UserLogsDAO {
                 + "    logs.user_id_users = users.id\n"
                 + "WHERE (logs.login_time BETWEEN ? AND ?)\n"
                 + "AND (users.program = ?)\n"
-                + "AND (users.yearlvl = ?)")) {
+                + "AND (users.yearlvl = ?)\n"
+                + "ORDER BY\n"
+                + "    logs.login_time DESC")) {
 
             // Set the parameters for the placeholders
             stmt.setDate(1, start);
@@ -174,8 +179,8 @@ public class UserLogsDAO {
                 String userFullname = rsltSet.getString("fullname");
                 String userProgram = rsltSet.getString("program");
                 String userYrlvl = rsltSet.getString("yearlvl");
-                Date userLogin = rsltSet.getDate("login_time");
-                Date userLogout = rsltSet.getDate("logout_time");
+                Timestamp userLogin = rsltSet.getTimestamp("formatted_login_time");
+                Timestamp userLogout = rsltSet.getTimestamp("formatted_logout_time");
                 String userReason = rsltSet.getString("reason");
 
                 // Create a UserLogsDTO object and add it to the users list
@@ -196,24 +201,25 @@ public class UserLogsDAO {
         // Filter by program
         if (!"PROGRAM".equals(text)) {
             String programSql = """
-            SELECT
-                logs.fullname,
-                logs.reason,
-                logs.login_time,
-                logs.logout_time,
-                users.studentfacultyID AS sfID,
-                users.role AS userRole,
-                users.program,
-                users.yearlvl
-            FROM
-                users
-            RIGHT JOIN
-                logs
-            ON
-                logs.user_id_users = users.id
-            WHERE (users.program = ?)
-            AND (logs.login_time BETWEEN ? AND ?)
-        """;
+                                SELECT
+                                    logs.fullname,
+                                    logs.reason,
+                                    TO_CHAR(logs.login_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_login_time,
+                                    TO_CHAR(logs.logout_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_logout_time,
+                                    users.studentfacultyID AS sfID,
+                                    users.role AS userRole,
+                                    users.program,
+                                    users.yearlvl
+                                FROM
+                                    users
+                                RIGHT JOIN
+                                    logs
+                                ON
+                                    logs.user_id_users = users.id
+                                WHERE (users.program = ?)
+                                AND (logs.login_time BETWEEN ? AND ?)
+                                ORDER BY
+                                    logs.login_time DESC;""";
             try (Connection conn = DatabaseConnector.getConnection()) {
                 PreparedStatement pstmt = conn.prepareStatement(programSql);
 
@@ -229,8 +235,8 @@ public class UserLogsDAO {
                     String userFullname = rsltSet.getString("fullname");
                     String userProgram = rsltSet.getString("program");
                     String userYrlvl = rsltSet.getString("yearlvl");
-                    Date userLogin = rsltSet.getDate("login_time");
-                    Date userLogout = rsltSet.getDate("logout_time");
+                    Timestamp userLogin = rsltSet.getTimestamp("formatted_login_time");
+                    Timestamp userLogout = rsltSet.getTimestamp("formatted_logout_time");
                     String userReason = rsltSet.getString("reason");
 
                     // Create a UserLogsDTO object and add it to the users list
@@ -249,8 +255,8 @@ public class UserLogsDAO {
             SELECT
                 logs.fullname,
                 logs.reason,
-                logs.login_time,
-                logs.logout_time,
+                TO_CHAR(logs.login_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_login_time,
+                TO_CHAR(logs.logout_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_logout_time,
                 users.studentfacultyID AS sfID,
                 users.role AS userRole,
                 users.program,
@@ -263,6 +269,8 @@ public class UserLogsDAO {
                 logs.user_id_users = users.id
             WHERE (logs.login_time BETWEEN ? AND ?)
             AND (users.yearlvl = ?)
+            ORDER BY
+                logs.login_time DESC
         """;
             try (Connection conn = DatabaseConnector.getConnection()) {
                 PreparedStatement pstmt = conn.prepareStatement(yearLvlSql);
@@ -279,8 +287,8 @@ public class UserLogsDAO {
                     String userFullname = rsltSet.getString("fullname");
                     String userProgram = rsltSet.getString("program");
                     String userYrlvl = rsltSet.getString("yearlvl");
-                    Date userLogin = rsltSet.getDate("login_time");
-                    Date userLogout = rsltSet.getDate("logout_time");
+                    Timestamp userLogin = rsltSet.getTimestamp("formatted_login_time");
+                    Timestamp userLogout = rsltSet.getTimestamp("formatted_logout_time");
                     String userReason = rsltSet.getString("reason");
 
                     // Create a UserLogsDTO object and add it to the users list
@@ -303,8 +311,8 @@ public class UserLogsDAO {
                 SELECT
                     logs.fullname,
                     logs.reason,
-                    logs.login_time,
-                    logs.logout_time,
+                    TO_CHAR(logs.login_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_login_time,
+                    TO_CHAR(logs.logout_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_logout_time,
                     users.studentfacultyID AS sfID,
                     users.role AS userRole,
                     users.program,
@@ -316,6 +324,8 @@ public class UserLogsDAO {
                 ON
                     logs.user_id_users = users.id
                 WHERE (logs.login_time BETWEEN ? AND ?)
+                ORDER BY
+                    logs.login_time DESC
                 """;
 
         try (Connection conn = DatabaseConnector.getConnection()) {
@@ -332,8 +342,8 @@ public class UserLogsDAO {
                 String userFullname = rsltSet.getString("fullname");
                 String userProgram = rsltSet.getString("program");
                 String userYrlvl = rsltSet.getString("yearlvl");
-                Date userLogin = rsltSet.getDate("login_time");
-                Date userLogout = rsltSet.getDate("logout_time");
+                Timestamp userLogin = rsltSet.getTimestamp("formatted_login_time");
+                Timestamp userLogout = rsltSet.getTimestamp("formatted_logout_time");
                 String userReason = rsltSet.getString("reason");
 
                 // Create a UserLogsDTO object and add it to the users list
@@ -383,58 +393,55 @@ public class UserLogsDAO {
         return 0;
     }
 
-public int recordCount(String text, Date start, Date end) throws SQLException {
-    int count = 0;
-    
-    // Filter by program
-    if (!"PROGRAM".equals(text)) {
-        String programSql = """
+    public int recordCount(String text, Date start, Date end) throws SQLException {
+        int count = 0;
+
+        // Filter by program
+        if (!"PROGRAM".equals(text)) {
+            String programSql = """
             SELECT COUNT(*)
             FROM users 
             RIGHT JOIN logs ON logs.user_id_users = users.id 
             WHERE (logs.login_time BETWEEN ? AND ?) 
             AND (users.program = ?)
         """;
-        try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(programSql)) {
-            pstmt.setDate(1, start);
-            pstmt.setDate(2, end);
-            pstmt.setString(3, text);
+            try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement pstmt = conn.prepareStatement(programSql)) {
+                pstmt.setDate(1, start);
+                pstmt.setDate(2, end);
+                pstmt.setString(3, text);
 
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    count += rs.getInt(1);
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        count += rs.getInt(1);
+                    }
                 }
             }
         }
-    }
-    
-    // Filter by year level
-    if (!"YEAR LEVEL".equals(text)) {
-        String yearLvlSql = """
+
+        // Filter by year level
+        if (!"YEAR LEVEL".equals(text)) {
+            String yearLvlSql = """
             SELECT COUNT(*) 
             FROM users
             RIGHT JOIN logs ON logs.user_id_users = users.id
             WHERE (logs.login_time BETWEEN ? AND ?)
             AND (yearlvl = ?)
         """;
-        try (Connection conn = DatabaseConnector.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(yearLvlSql)) {
-            pstmt.setDate(1, start);
-            pstmt.setDate(2, end);
-            pstmt.setString(3, text);
+            try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement pstmt = conn.prepareStatement(yearLvlSql)) {
+                pstmt.setDate(1, start);
+                pstmt.setDate(2, end);
+                pstmt.setString(3, text);
 
-            try (ResultSet rs = pstmt.executeQuery()) {
-                if (rs.next()) {
-                    count += rs.getInt(1);
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    if (rs.next()) {
+                        count += rs.getInt(1);
+                    }
                 }
             }
         }
-    }
-    
-    return count;
-}
 
+        return count;
+    }
 
     public int recordCount(Date start, Date end) throws SQLException {
         String sql = """

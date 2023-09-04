@@ -36,6 +36,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         initComponents();
         lblAdminsName.setText(fname);
         LibraryMethods libMethods = new LibraryMethods();
+        libMethods.customTable(mostLogsTable);
+        libMethods.customTable(activeUserNow);
+        libMethods.customTable(studentAcctTable);
+        libMethods.customTable(facultyAcctTable);
+        libMethods.customTable(adminAccountTable);
+        libMethods.customTable(logsTable);
         displayAllActiveUser();
         displayMostLogs();
         displayLogs();
@@ -441,7 +447,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ACTIVE NOW");
-        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, -1));
+        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, -1));
 
         activeUserNow.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         activeUserNow.setModel(new javax.swing.table.DefaultTableModel(
@@ -564,6 +570,11 @@ public class AdminDashboard extends javax.swing.JFrame {
         accountPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBorder8.setBackground(new java.awt.Color(128, 0, 0));
+        panelBorder8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBorder8MouseEntered(evt);
+            }
+        });
 
         jTabbedPane1.setBackground(new java.awt.Color(128, 0, 0));
         jTabbedPane1.setForeground(new java.awt.Color(255, 223, 0));
@@ -574,7 +585,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(128, 0, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtStudentSearchAcct.setText("Enter Search");
+        txtStudentSearchAcct.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        txtStudentSearchAcct.setText("Search");
         txtStudentSearchAcct.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtStudentSearchAcctKeyReleased(evt);
@@ -617,6 +629,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel2.add(btnUpdateStudentAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
+        studentAcctTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         studentAcctTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -738,15 +751,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel4.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
+        facultyAcctTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "FACULTY ID", "DEPARTMENT", "EMAIL", "FIRST NAME", "LASTNAME"
+                "FACULTY ID", "EMAIL", "FIRST NAME", "LASTNAME"
             }
         ));
         facultyAcctTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -803,6 +817,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         jPanel3.add(btnDeleteAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
+        adminAccountTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         adminAccountTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -848,10 +863,16 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBorder9.setBackground(new java.awt.Color(128, 0, 0));
+        panelBorder9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBorder9MouseEntered(evt);
+            }
+        });
 
         panelBorder9.add(comboProgram);
         comboProgram.setBounds(30, 72, 110, 30);
 
+        logsTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         logsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -876,6 +897,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         logsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         logsTable.setShowGrid(true);
         logsPane.setViewportView(logsTable);
+        if (logsTable.getColumnModel().getColumnCount() > 0) {
+            logsTable.getColumnModel().getColumn(0).setResizable(false);
+            logsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            logsTable.getColumnModel().getColumn(1).setResizable(false);
+            logsTable.getColumnModel().getColumn(2).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setPreferredWidth(30);
+            logsTable.getColumnModel().getColumn(4).setResizable(false);
+            logsTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+            logsTable.getColumnModel().getColumn(5).setResizable(false);
+            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(6).setResizable(false);
+            logsTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+        }
 
         panelBorder9.add(logsPane);
         logsPane.setBounds(10, 130, 930, 400);
@@ -1387,6 +1422,24 @@ public class AdminDashboard extends javax.swing.JFrame {
         endDateChooser.setCalendar(null);
         displayLogs();
     }//GEN-LAST:event_btnClearActionPerformed
+
+    private void panelBorder9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBorder9MouseEntered
+
+        displayMostLogs();
+        displayLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_panelBorder9MouseEntered
+
+    private void panelBorder8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBorder8MouseEntered
+
+        displayMostLogs();
+        displayLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_panelBorder8MouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

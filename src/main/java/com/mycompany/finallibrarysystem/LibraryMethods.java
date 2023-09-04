@@ -564,7 +564,7 @@ public class LibraryMethods {
     }
 
     // Customizes the appearance of a JTable's header
-    public void Table(JTable table) {
+    public void customTable(JTable table) {
         // Set font and appearance for table header
         table.getTableHeader().setFont(new Font("Segui UI", Font.BOLD, 14));
         // Set height of the table header

@@ -30,6 +30,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         btnBackToLogin.addActionListener(event);
     }
 
+
     private void insertContentComboProgram() {
         List<AccountsDTO> programList = LibraryMethods.programComboContent();
         comboProgram.removeAllItems(); // Clear existing items
@@ -234,7 +235,7 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblWarningMsg.setVisible(true);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png")));
         if (studentFacultyID.isEmpty() && firstName.isEmpty() && lastName.isEmpty() && email.isEmpty() && !rbtnStudent.isSelected() && !rbtnFaculty.isSelected()) {
-            lblWarningMsg.setText("Please input all required fields.");
+            lblWarningMsg.setText("Please complete all required fields..");
         } else if (studentFacultyID.isEmpty()) {
             lblWarningMsg.setText("Please Specify your ID");
         } else if (firstName.isEmpty() || lastName.isEmpty()) {
@@ -309,7 +310,7 @@ public class SignUpPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_txtStudentFacultyIDActionPerformed
 
     private void btnBackToLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackToLoginActionPerformed
-         lblWarningMsg.setVisible(false);
+        lblWarningMsg.setVisible(false);
     }//GEN-LAST:event_btnBackToLoginActionPerformed
 
     private void txtStudentFacultyIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStudentFacultyIDMouseClicked

@@ -42,6 +42,11 @@ public class Chart extends javax.swing.JPanel {
         comboYrLvl = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(128, 0, 0));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         add(pieChart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 34, 450, 280));
 
@@ -64,7 +69,7 @@ public class Chart extends javax.swing.JPanel {
         }
     }
 
-    private void showAllData() {
+    public void showAllData() {
         try {
             pieChart1.clearData();
             String sql = """
@@ -142,6 +147,10 @@ public class Chart extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_comboYrLvlActionPerformed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        showAllData();
+    }//GEN-LAST:event_formMouseEntered
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

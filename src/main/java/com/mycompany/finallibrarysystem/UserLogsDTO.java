@@ -5,6 +5,7 @@
 package com.mycompany.finallibrarysystem;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -25,8 +26,8 @@ public class UserLogsDTO {
     private String program;
     private String yrlvl;
     private String reason;
-    private Date loginTime;
-    private Date logoutTime;
+    private Timestamp loginTime;
+    private Timestamp logoutTime;
     private String email;
     
 
@@ -37,7 +38,7 @@ public class UserLogsDTO {
         this.email = email;
     }
     
-    public UserLogsDTO(String role, String fullname, String program, String yrlvl, String reason, Date loginTime, Date logoutTime) {
+    public UserLogsDTO(String role, String fullname, String program, String yrlvl, String reason, Timestamp loginTime, Timestamp logoutTime) {
         this.role = role;
         this.fullname = fullname;
         this.program = program;
@@ -159,19 +160,19 @@ public class UserLogsDTO {
         this.reason = reason;
     }
 
-    public Date getLoginTime() {
+    public Timestamp getLoginTime() {
         return loginTime;
     }
 
-    public void setLoginTime(Date loginTime) {
+    public void setLoginTime(Timestamp loginTime) {
         this.loginTime = loginTime;
     }
 
-    public Date getLogoutTime() {
+    public Timestamp getLogoutTime() {
         return logoutTime;
     }
 
-    public void setLogoutTime(Date logoutTime) {
+    public void setLogoutTime(Timestamp logoutTime) {
         this.logoutTime = logoutTime;
     }
 

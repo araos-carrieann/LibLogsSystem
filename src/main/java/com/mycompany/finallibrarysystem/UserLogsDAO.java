@@ -50,8 +50,8 @@ public class UserLogsDAO {
                 "SELECT\n"
                 + "    logs.fullname,\n"
                 + "    logs.reason,\n"
-                + "    logs.login_time,\n"
-                + "    logs.logout_time,\n"
+                + "    TO_CHAR(logs.login_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_login_time,\n"
+                + "    TO_CHAR(logs.logout_time, 'YYYY-MM-DD HH24:MI:SS') AS formatted_logout_time,\n"
                 + "    users.studentfacultyID AS sfID,\n"
                 + "    users.role AS userRole,\n"
                 + "    users.program,\n"
@@ -75,8 +75,8 @@ public class UserLogsDAO {
                 String userFullname = rsltSet.getString("fullname");
                 String userProgram = rsltSet.getString("program");
                 String userYrlvl = rsltSet.getString("yearlvl");
-                Timestamp userLogin = rsltSet.getTimestamp("login_time");
-                Timestamp userLogout = rsltSet.getTimestamp("logout_time");
+                Timestamp userLogin = rsltSet.getTimestamp("formatted_login_time");
+                Timestamp userLogout = rsltSet.getTimestamp("formatted_logout_time");
                 String userReason = rsltSet.getString("reason");
 
                 // Create a LogsDTO object and add it to the dataList

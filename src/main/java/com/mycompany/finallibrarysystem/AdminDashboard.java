@@ -1425,11 +1425,6 @@ public class AdminDashboard extends javax.swing.JFrame {
 
     private void panelBorder9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBorder9MouseEntered
 
-        displayMostLogs();
-        displayLogs();
-        displayStudentAccount();
-        displayFacultyAccount();
-        displayAdminAccount();
     }//GEN-LAST:event_panelBorder9MouseEntered
 
     private void panelBorder8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBorder8MouseEntered

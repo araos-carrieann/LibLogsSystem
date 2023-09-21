@@ -355,15 +355,26 @@ public class UserLogsDAO {
         return users;
     }
 
+// Retrieves the record count based on certain criteria
     public int recordCount() throws SQLException {
-        String sql = "SELECT COUNT(*) FROM users RIGHT JOIN logs ON logs.user_id_users = users.id";
+        // Define the SQL query to count records
+        String sql = "SELECT COUNT(*) FROM users RIGHT JOIN logs ON logs.user_id_users = users.id "
+                + "WHERE users.role IN ('STUDENT', 'FACULTY', 'ADMIN') "
+                + "AND logs.login_time >= CURRENT_TIMESTAMP - INTERVAL '3 months'";
+
         try (Connection conn = DatabaseConnector.getConnection()) {
             PreparedStatement pstmt = conn.prepareStatement(sql);
             ResultSet rs = pstmt.executeQuery();
+
             if (rs.next()) {
+                // Retrieve and return the count from the result set
                 return rs.getInt(1);
             }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the exception according to your application's error handling mechanism
         }
+
+        // Default return value if an exception occurs or no records are found
         return 0;
     }
 

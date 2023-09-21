@@ -11,27 +11,35 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author araos
  */
-public class ComboBoxContentProgram extends javax.swing.JDialog {
+public class ComboBoxContentReason extends javax.swing.JDialog {
 
     /**
      * Creates new form Program
      */
-    public ComboBoxContentProgram(java.awt.Frame parent, boolean modal) {
+    public ComboBoxContentReason(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        displayProgram();
+        displayReason();
         lblWarningMessage.setVisible(false);
     }
 
-    private void displayProgram() {
-        DefaultTableModel allProgram = (DefaultTableModel) programTable.getModel();
-        allProgram.setRowCount(0);
+    // Display the reason options in the reason table
+    private void displayReason() {
+        // Get the DefaultTableModel associated with the reasonTable
+        DefaultTableModel reasonTableModel = (DefaultTableModel) reasonTable.getModel();
 
-        List<AccountsDTO> programList = LibraryMethods.programComboContent();
+        // Clear all existing rows from the table
+        reasonTableModel.setRowCount(0);
 
-        for (AccountsDTO program : programList) {
-            Object[] programRow = {program.getProgram()};
-            allProgram.addRow(programRow);
+        // Retrieve the list of reason options from the database
+        List<AccountsDTO> reasonList = LibraryMethods.reasonComboContent();
+
+        // Iterate through the list and add each reason option to the table
+        for (AccountsDTO reason : reasonList) {
+            // Create an array containing the reason option to add to the table
+            Object[] reasonRow = {reason.getReason()};
+            // Add the reason option to the table's model
+            reasonTableModel.addRow(reasonRow);
         }
     }
 
@@ -40,10 +48,10 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
 
         panelGradient1 = new com.mycompany.finallibrarysystem.Design.PanelGradient();
         jScrollPane1 = new javax.swing.JScrollPane();
-        programTable = new javax.swing.JTable();
-        txtAddProgram = new javax.swing.JTextField();
-        btnAddProgram = new javax.swing.JButton();
-        btnDeleteProgram = new javax.swing.JButton();
+        reasonTable = new javax.swing.JTable();
+        txtAddReason = new javax.swing.JTextField();
+        btnAddReason = new javax.swing.JButton();
+        btnDeleteReason = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblWarningMessage = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -54,7 +62,7 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 204));
 
-        programTable.setModel(new javax.swing.table.DefaultTableModel(
+        reasonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -62,53 +70,64 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 {null}
             },
             new String [] {
-                "PROGRAM"
+                "REASON"
             }
-        ));
-        programTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                programTableMouseClicked(evt);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(programTable);
+        reasonTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reasonTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(reasonTable);
+        if (reasonTable.getColumnModel().getColumnCount() > 0) {
+            reasonTable.getColumnModel().getColumn(0).setResizable(false);
+        }
 
         panelGradient1.add(jScrollPane1);
         jScrollPane1.setBounds(40, 150, 280, 180);
 
-        txtAddProgram.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtAddProgram.setBorder(null);
-        txtAddProgram.addActionListener(new java.awt.event.ActionListener() {
+        txtAddReason.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAddReason.setBorder(null);
+        txtAddReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAddProgramActionPerformed(evt);
+                txtAddReasonActionPerformed(evt);
             }
         });
-        panelGradient1.add(txtAddProgram);
-        txtAddProgram.setBounds(70, 60, 210, 30);
+        panelGradient1.add(txtAddReason);
+        txtAddReason.setBounds(70, 60, 210, 30);
 
-        btnAddProgram.setBackground(new java.awt.Color(204, 255, 204));
-        btnAddProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAddProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_icon.png"))); // NOI18N
-        btnAddProgram.setText("ADD");
-        btnAddProgram.addActionListener(new java.awt.event.ActionListener() {
+        btnAddReason.setBackground(new java.awt.Color(204, 255, 204));
+        btnAddReason.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAddReason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/add_icon.png"))); // NOI18N
+        btnAddReason.setText("ADD");
+        btnAddReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddProgramActionPerformed(evt);
+                btnAddReasonActionPerformed(evt);
             }
         });
-        panelGradient1.add(btnAddProgram);
-        btnAddProgram.setBounds(40, 110, 100, 27);
+        panelGradient1.add(btnAddReason);
+        btnAddReason.setBounds(40, 110, 100, 27);
 
-        btnDeleteProgram.setBackground(new java.awt.Color(255, 51, 51));
-        btnDeleteProgram.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDeleteProgram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
-        btnDeleteProgram.setText("DELETE");
-        btnDeleteProgram.setEnabled(false);
-        btnDeleteProgram.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteReason.setBackground(new java.awt.Color(255, 51, 51));
+        btnDeleteReason.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDeleteReason.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/delete_icon.png"))); // NOI18N
+        btnDeleteReason.setText("DELETE");
+        btnDeleteReason.setEnabled(false);
+        btnDeleteReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteProgramActionPerformed(evt);
+                btnDeleteReasonActionPerformed(evt);
             }
         });
-        panelGradient1.add(btnDeleteProgram);
-        btnDeleteProgram.setBounds(210, 110, 110, 27);
+        panelGradient1.add(btnDeleteReason);
+        btnDeleteReason.setBounds(210, 110, 110, 27);
 
         btnBack.setBackground(new java.awt.Color(255, 255, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -128,9 +147,9 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         lblWarningMessage.setBounds(35, 340, 280, 24);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("PROGRAM");
+        jLabel1.setText("REASON");
         panelGradient1.add(jLabel1);
-        jLabel1.setBounds(130, 20, 92, 25);
+        jLabel1.setBounds(130, 20, 73, 25);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,47 +170,47 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddProgramActionPerformed
+    private void txtAddReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAddReasonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAddProgramActionPerformed
+    }//GEN-LAST:event_txtAddReasonActionPerformed
 
-    private void btnAddProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddProgramActionPerformed
-        String addProgram = txtAddProgram.getText();
-        if (addProgram.isEmpty()) {
+    private void btnAddReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddReasonActionPerformed
+        String addReason = txtAddReason.getText();
+        if (addReason.isEmpty()) {
             lblWarningMessage.setVisible(true);
-            lblWarningMessage.setText("Please Input Appropriate Program.");
+            lblWarningMessage.setText("Please Input Appropriate Reason.");
         } else {
-            if (LibraryMethods.addProgramComboBox(addProgram)) {
-                displayProgram();
-                txtAddProgram.setText("");
+            if (LibraryMethods.addReasonComboBox(addReason)) {
+                displayReason();
+                txtAddReason.setText("");
                 lblWarningMessage.setVisible(false);
-            }else{
+            } else {
                 lblWarningMessage.setVisible(true);
-                lblWarningMessage.setText("This Program Already Exist");
+                lblWarningMessage.setText("This Reason Already Exist");
             }
         }
-    }//GEN-LAST:event_btnAddProgramActionPerformed
+    }//GEN-LAST:event_btnAddReasonActionPerformed
 
-    private void btnDeleteProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteProgramActionPerformed
-        DefaultTableModel model = (DefaultTableModel) programTable.getModel();
-        int selectedRow = programTable.getSelectedRow();
+    private void btnDeleteReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteReasonActionPerformed
+        DefaultTableModel model = (DefaultTableModel) reasonTable.getModel();
+        int selectedRow = reasonTable.getSelectedRow();
         if (selectedRow != 0) {
-            String program = (String) model.getValueAt(selectedRow, 0);
+            String reason = (String) model.getValueAt(selectedRow, 0);
             model.removeRow(selectedRow);
-            LibraryMethods.deleteProgram(program);
-            displayProgram();
+            LibraryMethods.deleteReason(reason);
+            displayReason();
             lblWarningMessage.setVisible(false);
-            btnDeleteProgram.setEnabled(false);
+            btnDeleteReason.setEnabled(false);
         }
-    }//GEN-LAST:event_btnDeleteProgramActionPerformed
+    }//GEN-LAST:event_btnDeleteReasonActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         dispose();
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void programTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_programTableMouseClicked
-        btnDeleteProgram.setEnabled(true);
-    }//GEN-LAST:event_programTableMouseClicked
+    private void reasonTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reasonTableMouseClicked
+        btnDeleteReason.setEnabled(true);
+    }//GEN-LAST:event_reasonTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,20 +229,21 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ComboBoxContentProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComboBoxContentReason.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ComboBoxContentProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComboBoxContentReason.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ComboBoxContentProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComboBoxContentReason.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ComboBoxContentProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ComboBoxContentReason.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ComboBoxContentProgram dialog = new ComboBoxContentProgram(new javax.swing.JFrame(), true);
+                ComboBoxContentReason dialog = new ComboBoxContentReason(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -236,14 +256,14 @@ public class ComboBoxContentProgram extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddProgram;
+    private javax.swing.JButton btnAddReason;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnDeleteProgram;
+    private javax.swing.JButton btnDeleteReason;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblWarningMessage;
     private com.mycompany.finallibrarysystem.Design.PanelGradient panelGradient1;
-    private javax.swing.JTable programTable;
-    private javax.swing.JTextField txtAddProgram;
+    private javax.swing.JTable reasonTable;
+    private javax.swing.JTextField txtAddReason;
     // End of variables declaration//GEN-END:variables
 }

@@ -7,6 +7,7 @@ package com.mycompany.finallibrarysystem;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.SwingUtilities;
 
 /**
@@ -21,10 +22,20 @@ public class LoginPanel extends javax.swing.JPanel {
     public LoginPanel() {
         initComponents();
         lblWarningMsg.setVisible(false);
+        insertContentComboReason();
     }
 
     public void addEventRegister(ActionListener event) {
         btnGoToSignUp.addActionListener(event);
+    }
+    
+        private void insertContentComboReason() {
+        List<AccountsDTO> programList = LibraryMethods.reasonComboContent();
+        comboBoxReason.removeAllItems(); // Clear existing items
+
+        for (AccountsDTO data : programList) {
+            comboBoxReason.addItem(data.getReason());
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -140,7 +151,21 @@ public class LoginPanel extends javax.swing.JPanel {
                         AdminDashboard admn = new AdminDashboard(fname, sfID);
                         admn.setVisible(true);
                         SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
-                    } else if (userRole.equals("STUDENT") || userRole.equals("FACULTY")) {
+                    } else if (userRole.equals("FACULTY")) {
+                        if (timeinTimeoutChecker) {
+                            LibraryMethods.logUserLogin(sfID, fullName, reason);
+                            SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
+                            WelcomeUser dialog = new WelcomeUser(new javax.swing.JFrame(), true, fullName);
+                            dialog.setVisible(true); // Show the dialog
+                            new MainFrame().setVisible(true);
+                        } else if (!timeinTimeoutChecker) {
+                            UserLogsDAO.userLogout(sfID);
+                            SwingUtilities.getWindowAncestor((Component) evt.getSource()).dispose();
+                            LogoutDialog dialog = new LogoutDialog(new javax.swing.JFrame(), true);
+                            dialog.setVisible(true); // Show the dialog
+                            new MainFrame().setVisible(true);
+                        }
+                    } else if (userRole.equals("STUDENT")) {
                         if (timeinTimeoutChecker) {
                             if (reason.equals("REASON")) {
                                 lblWarningMsg.setText("Specify your Reason");

@@ -402,6 +402,93 @@ public class LibraryMethods {
         }
     }
 
+    public static void createReasonTable() {
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            // Create the "reason" table if it doesn't exist
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS reason (reason VARCHAR(50))";
+            try (PreparedStatement statement = conn.prepareStatement(createTableQuery)) {
+                // Execute the query to create the "reason" table
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the database-related exception according to your application's error handling mechanism
+        }
+    }
+    
+// Adds a reason option to the reason combobox in the database
+
+    public static boolean addReasonComboBox(String inputReason) {
+        createReasonTable(); // Ensure that the "reason" table exists
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            String checkReasonQuery = "SELECT * FROM reason WHERE reason = ?";
+            try (PreparedStatement selectStatement = conn.prepareStatement(checkReasonQuery)) {
+                selectStatement.setString(1, inputReason);
+                ResultSet resultSet = selectStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    // Reason option already exists in the table
+                    return false;
+                } else {
+                    // Insert the new reason option into the "reason" table
+                    String insertReasonQuery = "INSERT INTO reason (reason) VALUES (?)";
+                    try (PreparedStatement insertStatement = conn.prepareStatement(insertReasonQuery)) {
+                        // Set the reason option as a parameter in the insert query
+                        insertStatement.setString(1, inputReason);
+                        // Execute the query to insert the reason option into the table
+                        insertStatement.executeUpdate();
+                        return true;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the database-related exception according to your application's error handling mechanism
+        }
+
+        return false; // Default return if an exception occurs
+    }
+
+// Retrieves the content of the reason combobox from the "reason" table in the database
+    public static List<AccountsDTO> reasonComboContent() {
+        // Create an empty list to store the retrieved reason options
+        List<AccountsDTO> reasonList = new ArrayList<>();
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            // Prepare the SQL query to retrieve reason options
+            String sql = "SELECT * FROM reason";
+            try (PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rsltSet = stmt.executeQuery()) {
+                // Iterate through the result set to retrieve reason options
+                while (rsltSet.next()) {
+                    // Extract the reason option from the result set
+                    String reason = rsltSet.getString("reason");
+                    // Create an AccountsDTO object with the reason option and "null" values for unused fields
+                    AccountsDTO data = new AccountsDTO(reason);
+                    reasonList.add(data);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle the database-related exception according to your application's error handling mechanism
+        }
+        // Return the list of reason options
+        return reasonList;
+    }
+
+// Deletes a reason option from the "reason" table in the database
+    public static void deleteReason(String reason) {
+        try (Connection conn = DatabaseConnector.getConnection()) {
+            // Prepare the SQL delete query
+            String sql = "DELETE FROM reason WHERE reason = ?";
+            try (PreparedStatement statement = conn.prepareStatement(sql)) {
+                // Set the reason option as a parameter in the delete query
+                statement.setString(1, reason);
+                // Execute the delete query to remove the reason option from the table
+                statement.executeUpdate();
+                System.out.println("Row deleted successfully.");
+            }
+        } catch (SQLException e) {
+            // Handle the database-related exception by printing the error message
+            System.out.println("Error deleting row from the database: " + e.getMessage());
+        }
+    }
+
     public static int getUserID(String studentFacultyID) {
         int id = 0;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement stmt = conn.prepareStatement("SELECT id FROM users WHERE studentFacultyID = '" + studentFacultyID + "'"); ResultSet rsltSet = stmt.executeQuery()) {

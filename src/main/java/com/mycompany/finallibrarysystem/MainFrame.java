@@ -5,6 +5,10 @@
 package com.mycompany.finallibrarysystem;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import static com.mycompany.finallibrarysystem.LibraryMethods.createReasonTable;
+import static com.mycompany.finallibrarysystem.LibraryMethods.createTableProgram;
+import static com.mycompany.finallibrarysystem.LibraryMethods.createYearLevelTable;
+import static com.mycompany.finallibrarysystem.UserLogsDAO.createLogs;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +21,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     public MainFrame() {
         initComponents();
+        createLogs();
+        createTableProgram();
+        createYearLevelTable();
+        createReasonTable();
         com.mycompany.finallibrarysystem.LoginPanel login = new com.mycompany.finallibrarysystem.LoginPanel();
         com.mycompany.finallibrarysystem.SignUpPanel signUp = new com.mycompany.finallibrarysystem.SignUpPanel();
         mainSlide.setAnimate(20);

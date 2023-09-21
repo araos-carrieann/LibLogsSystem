@@ -24,6 +24,12 @@ public class AccountsDTO {
     private String yrlvl;
     private String userLogin;
     private String userLogout;
+    private String reason;
+
+    public AccountsDTO(String reason) {
+        this.reason = reason;
+    }
+    
 
     public AccountsDTO(int logsID, String fullname, String userLogin, String userLogout) {
         this.logsID = logsID;
@@ -184,6 +190,14 @@ public class AccountsDTO {
 
     public void setMostLogs(String mostLogs) {
         this.mostLogs = mostLogs;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
     }
 
 }

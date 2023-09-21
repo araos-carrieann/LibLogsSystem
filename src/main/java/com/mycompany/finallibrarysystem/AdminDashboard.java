@@ -238,8 +238,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminsName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         panelBorder10 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        btnProgram = new javax.swing.JButton();
+        btnReason = new javax.swing.JButton();
         btnYearLevel = new javax.swing.JButton();
+        btnProgram = new javax.swing.JButton();
         accountPage = new javax.swing.JPanel();
         panelBorder8 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -542,15 +543,15 @@ public class AdminDashboard extends javax.swing.JFrame {
 
         panelBorder10.setBackground(new java.awt.Color(128, 0, 0));
 
-        btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnProgram.setText("PROGRAM");
-        btnProgram.addActionListener(new java.awt.event.ActionListener() {
+        btnReason.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnReason.setText("REASON");
+        btnReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProgramActionPerformed(evt);
+                btnReasonActionPerformed(evt);
             }
         });
-        panelBorder10.add(btnProgram);
-        btnProgram.setBounds(40, 40, 160, 40);
+        panelBorder10.add(btnReason);
+        btnReason.setBounds(50, 60, 150, 30);
 
         btnYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btnYearLevel.setText("YEAR LEVEL");
@@ -560,7 +561,17 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelBorder10.add(btnYearLevel);
-        btnYearLevel.setBounds(270, 40, 160, 40);
+        btnYearLevel.setBounds(280, 20, 150, 30);
+
+        btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnProgram.setText("PROGRAM");
+        btnProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProgramActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnProgram);
+        btnProgram.setBounds(50, 20, 150, 30);
 
         homePage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 470, 98));
 
@@ -932,7 +943,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelBorder9.add(comboYrLvl);
         comboYrLvl.setBounds(160, 72, 110, 30);
 
-        jButton1.setText("REFRESH");
+        jButton1.setText("FILTER");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -1167,8 +1178,8 @@ public class AdminDashboard extends javax.swing.JFrame {
             UpdateAcct updateDialog = new UpdateAcct(new javax.swing.JFrame(), true);
             updateDialog.setFacultyData(id, facultyAdminID, department, email, firstName, lastName);
             updateDialog.setVisible(true);
-             btnUpdateFacultyAcct.setEnabled(false);
-            
+            btnUpdateFacultyAcct.setEnabled(false);
+
         }
         displayStudentAccount();
         displayFacultyAccount();
@@ -1281,7 +1292,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                     }
 
                     logsTable.repaint(); // This is to reload the current table and show new data
-                    JOptionPane.showMessageDialog(jPanel1, "if block was used");
 
                 } else if (!comboProgram.getSelectedItem().toString().equals("PROGRAM")
                         && comboYrLvl.getSelectedItem().toString().equals("YEAR LEVEL")) {
@@ -1378,7 +1388,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                     }
 
                     logsTable.repaint(); // This is to reload the current table and show new data
-                    JOptionPane.showMessageDialog(jPanel1, "else block was used");
+
                 }
             } else {
                 System.out.println("Don't get the date !");
@@ -1393,8 +1403,8 @@ public class AdminDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramActionPerformed
-        ComboBoxContentProgram dialog = new ComboBoxContentProgram(new javax.swing.JFrame(), true);
+    private void btnReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReasonActionPerformed
+        ComboBoxContentReason dialog = new ComboBoxContentReason(new javax.swing.JFrame(), true);
         dialog.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1402,7 +1412,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         dialog.setVisible(true);
-    }//GEN-LAST:event_btnProgramActionPerformed
+    }//GEN-LAST:event_btnReasonActionPerformed
 
     private void btnYearLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnYearLevelActionPerformed
         ComboBoxContentYearLevel dialog = new ComboBoxContentYearLevel(new javax.swing.JFrame(), true);
@@ -1428,13 +1438,23 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_panelBorder9MouseEntered
 
     private void panelBorder8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelBorder8MouseEntered
-
         displayMostLogs();
         displayLogs();
         displayStudentAccount();
         displayFacultyAccount();
         displayAdminAccount();
     }//GEN-LAST:event_panelBorder8MouseEntered
+
+    private void btnProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProgramActionPerformed
+        ComboBoxContentProgram dialog = new ComboBoxContentProgram(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                System.exit(0);
+            }
+        });
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnProgramActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1449,6 +1469,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteFacultyAcct;
     private javax.swing.JButton btnDeleteStuAcct;
     private javax.swing.JButton btnProgram;
+    private javax.swing.JButton btnReason;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
     private javax.swing.JButton btnUpdateStudentAccount;

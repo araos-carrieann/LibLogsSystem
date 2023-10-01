@@ -54,6 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
         mainSlide = new com.mycompany.finallibrarysystem.Design.PanelSlide();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         panelGradient1.setColorPrimary(new java.awt.Color(255, 255, 102));
         panelGradient1.setColorSecondary(new java.awt.Color(153, 0, 0));

@@ -279,6 +279,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblEnd = new javax.swing.JLabel();
         btnClear = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1200, 700));
@@ -987,6 +988,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel5.setText("LOGS");
         logsPage.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 40));
 
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
+        btnRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefreshMouseClicked(evt);
+            }
+        });
+        logsPage.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 40, 40));
+
         cardPanel.add(logsPage, "card4");
 
         jPanel1.add(cardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1050, 670));
@@ -1456,6 +1465,14 @@ public class AdminDashboard extends javax.swing.JFrame {
         dialog.setVisible(true);
     }//GEN-LAST:event_btnProgramActionPerformed
 
+    private void btnRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRefreshMouseClicked
+        displayMostLogs();
+        displayLogs();
+        displayStudentAccount();
+        displayFacultyAccount();
+        displayAdminAccount();
+    }//GEN-LAST:event_btnRefreshMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountPage;
@@ -1470,6 +1487,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteStuAcct;
     private javax.swing.JButton btnProgram;
     private javax.swing.JButton btnReason;
+    private javax.swing.JLabel btnRefresh;
     private javax.swing.JButton btnUpdateAdminAcct;
     private javax.swing.JButton btnUpdateFacultyAcct;
     private javax.swing.JButton btnUpdateStudentAccount;

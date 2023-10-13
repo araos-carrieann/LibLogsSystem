@@ -66,6 +66,7 @@ public class LoginPanel extends javax.swing.JPanel {
         });
         panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 300, 50));
 
+        comboBoxReason.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         comboBoxReason.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REASON", "SLEEP", "REVIEW", "THESIS" }));
         comboBoxReason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

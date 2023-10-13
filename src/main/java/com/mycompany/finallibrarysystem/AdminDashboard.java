@@ -251,6 +251,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnUpdateStudentAccount = new javax.swing.JButton();
         studentAcctPane = new javax.swing.JScrollPane();
         studentAcctTable = new javax.swing.JTable();
+        btnAddYearLevel = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         txtFacultySearchAcct = new javax.swing.JTextField();
         btnAddFacultyAccount = new javax.swing.JButton();
@@ -552,7 +553,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelBorder10.add(btnReason);
-        btnReason.setBounds(50, 60, 150, 30);
+        btnReason.setBounds(140, 60, 200, 30);
 
         btnYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btnYearLevel.setText("YEAR LEVEL");
@@ -562,7 +563,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelBorder10.add(btnYearLevel);
-        btnYearLevel.setBounds(280, 20, 150, 30);
+        btnYearLevel.setBounds(250, 10, 200, 30);
 
         btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         btnProgram.setText("PROGRAM");
@@ -572,7 +573,7 @@ public class AdminDashboard extends javax.swing.JFrame {
             }
         });
         panelBorder10.add(btnProgram);
-        btnProgram.setBounds(50, 20, 150, 30);
+        btnProgram.setBounds(20, 10, 200, 30);
 
         homePage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 470, 98));
 
@@ -708,6 +709,15 @@ public class AdminDashboard extends javax.swing.JFrame {
         studentAcctPane.setViewportView(studentAcctTable);
 
         jPanel2.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 390));
+
+        btnAddYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
+        btnAddYearLevel.setText("UPDATE YEAR LVL");
+        btnAddYearLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddYearLevelActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAddYearLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 20));
 
         jTabbedPane1.addTab("STUDENT", jPanel2);
 
@@ -1473,6 +1483,13 @@ public class AdminDashboard extends javax.swing.JFrame {
         displayAdminAccount();
     }//GEN-LAST:event_btnRefreshMouseClicked
 
+    private void btnAddYearLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddYearLevelActionPerformed
+        AccountDAO acct = new AccountDAO();
+        String title = "Update Year Level Status"; // Define the title variable
+        String message = acct.addOneYear();
+        JOptionPane.showMessageDialog(null, message, title, JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnAddYearLevelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel accountPage;
@@ -1481,6 +1498,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JScrollPane adminPane;
     private javax.swing.JButton btnAddFacultyAccount;
     private javax.swing.JButton btnAddStudentAcct;
+    private javax.swing.JButton btnAddYearLevel;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnDeleteAdminAcct;
     private javax.swing.JButton btnDeleteFacultyAcct;

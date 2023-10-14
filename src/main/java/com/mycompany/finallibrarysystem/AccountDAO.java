@@ -69,27 +69,4 @@ public class AccountDAO {
             e.printStackTrace();
         }
     }
-
-    public static String addOneYear() {
-        String message = ""; // Initialize the message variable
-
-        try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT yrLvl FROM users"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE students SET year_level = year_level + 1 WHERE role = 'STUDENT'")) {
-
-            // Execute the SELECT statement
-            ResultSet resultSet = selectStmt.executeQuery();
-
-            int rowsUpdated = updateStmt.executeUpdate();
-
-            if (rowsUpdated > 0) {
-                message = "Year levels updated successfully";
-            } else {
-                message = "No records were updated.";
-            }
-        } catch (SQLException exc) {
-            exc.printStackTrace();
-            message = "Error occurred: " + exc.getMessage();
-        }
-        return message;
-    }
-
 }

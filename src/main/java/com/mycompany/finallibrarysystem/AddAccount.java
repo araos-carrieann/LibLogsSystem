@@ -67,15 +67,16 @@ public class AddAccount extends javax.swing.JDialog {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtEmail.setEditable(false);
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtEmail.setBorder(new javax.swing.border.MatteBorder(null));
+        txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtEmail.setMinimumSize(new java.awt.Dimension(65, 40));
         txtEmail.setPreferredSize(new java.awt.Dimension(65, 40));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 136, 290, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 290, -1));
 
         comboProgram.setBackground(new java.awt.Color(255, 255, 204));
         comboProgram.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 234, 140, 30));
+        jPanel1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 140, 30));
 
         comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
         comboYrLvl.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -84,7 +85,7 @@ public class AddAccount extends javax.swing.JDialog {
                 comboYrLvlActionPerformed(evt);
             }
         });
-        jPanel1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(193, 234, 150, 30));
+        jPanel1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, 150, 30));
 
         rbtnStudent.setText("STUDENT");
         rbtnStudent.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +93,7 @@ public class AddAccount extends javax.swing.JDialog {
                 rbtnStudentActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 194, -1, 30));
+        jPanel1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, 30));
 
         rbtnFaculty.setText("FACULTY");
         rbtnFaculty.addActionListener(new java.awt.event.ActionListener() {
@@ -100,23 +101,26 @@ public class AddAccount extends javax.swing.JDialog {
                 rbtnFacultyActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 194, -1, 30));
+        jPanel1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, 30));
 
+        btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 337, 180, 30));
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 180, 30));
 
+        btnSave.setBackground(new java.awt.Color(0, 102, 255));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnSave.setText("SAVE");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 297, 280, 30));
+        jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 280, 30));
 
         btnBack.setText("BACK");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -124,47 +128,50 @@ public class AddAccount extends javax.swing.JDialog {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(253, 407, 90, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 90, -1));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMsg.setText("jLabel1");
-        jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 377, 290, -1));
+        jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 290, -1));
 
+        txtStudentFacultyID.setEditable(false);
         txtStudentFacultyID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtStudentFacultyID.setBorder(new javax.swing.border.MatteBorder(null));
+        txtStudentFacultyID.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "I.D", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtStudentFacultyID.setMinimumSize(new java.awt.Dimension(65, 40));
         txtStudentFacultyID.setPreferredSize(new java.awt.Dimension(65, 40));
-        jPanel1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 6, 290, -1));
+        jPanel1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, -1));
 
+        txtFname.setEditable(false);
         txtFname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtFname.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel1.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(53, 66, 130, 40));
+        txtFname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
+        jPanel1.add(txtFname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 130, 40));
 
+        txtLname.setEditable(false);
         txtLname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtLname.setBorder(new javax.swing.border.MatteBorder(null));
+        txtLname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "LAST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtLname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLnameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 66, 140, 40));
+        jPanel1.add(txtLname, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 140, 40));
 
         lblUserID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id_iconBig.png"))); // NOI18N
-        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         lblUsername.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/frontuser_icon.png"))); // NOI18N
-        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, -1, -1));
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         lblUserEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email_icon.png"))); // NOI18N
-        jPanel1.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
+        jPanel1.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,10 +236,10 @@ public class AddAccount extends javax.swing.JDialog {
                 if (program.equals("DEFAULT") || yearLevel.equals("DEFAULT")) {
                     lblWarningMsg.setText("Please specify your program/year level.");
                 } else {
-                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                    lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png")));
                     boolean success = LibraryMethods.registerUser(status, role, stuFaculID, fname, lname, email, program, yearLevel);
                     if (success) {
-                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                        lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
                         lblWarningMsg.setText("User registered successfully.");
                     } else {
                         lblWarningMsg.setText("User registration failed. Account already exists.");
@@ -244,7 +251,7 @@ public class AddAccount extends javax.swing.JDialog {
                 role = rbtnFaculty.getText();
                 program = null;
                 yearLevel = null;
-                lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-verified-24.png")));
+                lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png")));
                 boolean success = LibraryMethods.registerUser(status, role, stuFaculID, fname, lname, email, program, yearLevel);
                 if (success) {
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));

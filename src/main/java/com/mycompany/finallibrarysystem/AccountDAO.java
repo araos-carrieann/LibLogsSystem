@@ -19,10 +19,12 @@ public class AccountDAO {
     public static String updateAccount(int id, String role, String stuFaculID, String firstName, String lastName, String email, String program, String yrLvl) {
         String message = null;
         try (Connection conn = DatabaseConnector.getConnection(); PreparedStatement selectStmt = conn.prepareStatement("SELECT * FROM users WHERE studentFacultyID = ? AND id <> ?"); PreparedStatement updateStmt = conn.prepareStatement("UPDATE users SET studentFacultyID = ?, role = ?, firstName = ?, lastName = ?, email = ?, program = ?, yearLvl = ? WHERE id = ?")) {
-
+            
             // Set parameters for the SELECT statement
             selectStmt.setString(1, stuFaculID);
             selectStmt.setInt(2, id);
+            System.out.println(id);
+            System.out.println(stuFaculID);
 
             // Execute the SELECT statement
             ResultSet resultSet = selectStmt.executeQuery();

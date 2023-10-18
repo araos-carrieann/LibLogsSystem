@@ -70,41 +70,47 @@ public class SignUpPanel extends javax.swing.JPanel {
         lblUsername = new javax.swing.JLabel();
         lblUserEmail = new javax.swing.JLabel();
 
-        setBackground((new Color(0, 0, 0, 0)));
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setPreferredSize(new java.awt.Dimension(530, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(530, 600));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnClear.setBackground(new java.awt.Color(51, 51, 255));
+        btnClear.setBackground(new java.awt.Color(136, 0, 0));
         btnClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("CLEAR");
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
-        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 80, -1));
+        jPanel1.add(btnClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 100, 40));
 
-        btnSignIn.setBackground(new java.awt.Color(51, 51, 255));
+        btnSignIn.setBackground(new java.awt.Color(136, 0, 0));
         btnSignIn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSignIn.setForeground(new java.awt.Color(255, 255, 255));
         btnSignIn.setText("SIGN IN");
         btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignInActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 190, -1));
+        jPanel1.add(btnSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 200, 40));
 
-        btnBackToLogin.setBackground(new java.awt.Color(51, 51, 255));
+        btnBackToLogin.setBackground(new java.awt.Color(136, 0, 0));
         btnBackToLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBackToLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnBackToLogin.setText("BACK TO LOGIN");
         btnBackToLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackToLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 279, -1));
+        jPanel1.add(btnBackToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 480, 310, 40));
 
         txtFirstName.setBackground((new Color(0, 0, 0, 0)));
         txtFirstName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
@@ -116,7 +122,7 @@ public class SignUpPanel extends javax.swing.JPanel {
                 txtFirstNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 160, 40));
+        jPanel1.add(txtFirstName, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 160, 40));
 
         txtLastName.setBackground((new Color(0, 0, 0, 0)));
         txtLastName.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
@@ -128,14 +134,14 @@ public class SignUpPanel extends javax.swing.JPanel {
                 txtLastNameActionPerformed(evt);
             }
         });
-        jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 150, 40));
+        jPanel1.add(txtLastName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 150, 40));
 
         txtEmail.setBackground((new Color(0, 0, 0, 0)));
         txtEmail.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         txtEmail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Arial Rounded MT Bold", 0, 12))); // NOI18N
         txtEmail.setPreferredSize(new java.awt.Dimension(90, 22));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 310, 40));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 310, 40));
 
         rbtnStudent.setBackground((new Color(0, 0, 0, 0)));
         btnGrp.add(rbtnStudent);
@@ -146,7 +152,7 @@ public class SignUpPanel extends javax.swing.JPanel {
                 rbtnStudentActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, -1, -1));
+        jPanel1.add(rbtnStudent, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, -1));
 
         rbtnFaculty.setBackground((new Color(0, 0, 0, 0)));
         btnGrp.add(rbtnFaculty);
@@ -157,7 +163,7 @@ public class SignUpPanel extends javax.swing.JPanel {
                 rbtnFacultyActionPerformed(evt);
             }
         });
-        jPanel1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));
+        jPanel1.add(rbtnFaculty, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
 
         comboProgram.setBackground(new java.awt.Color(255, 255, 204));
         comboProgram.addActionListener(new java.awt.event.ActionListener() {
@@ -165,22 +171,21 @@ public class SignUpPanel extends javax.swing.JPanel {
                 comboProgramActionPerformed(evt);
             }
         });
-        jPanel1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 130, -1));
+        jPanel1.add(comboProgram, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 130, 30));
 
         comboYrLvl.setBackground(new java.awt.Color(255, 255, 204));
-        comboYrLvl.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         comboYrLvl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboYrLvlActionPerformed(evt);
             }
         });
-        jPanel1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 300, 120, -1));
+        jPanel1.add(comboYrLvl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 120, 30));
 
         lblWarningMsg.setBackground((new Color(0, 0, 0, 0)));
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMsg.setText("jLabel1");
-        jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 420, -1));
+        jPanel1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, 420, -1));
 
         txtStudentFacultyID.setBackground((new Color(0, 0, 0, 0)));
         txtStudentFacultyID.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
@@ -197,19 +202,19 @@ public class SignUpPanel extends javax.swing.JPanel {
                 txtStudentFacultyIDActionPerformed(evt);
             }
         });
-        jPanel1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 310, 40));
+        jPanel1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 310, 40));
 
         lblUserID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUserID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id_iconBig.png"))); // NOI18N
-        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jPanel1.add(lblUserID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         lblUsername.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/frontuser_icon.png"))); // NOI18N
-        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
+        jPanel1.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
         lblUserEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/email_icon.png"))); // NOI18N
-        jPanel1.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
+        jPanel1.add(lblUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 500));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed

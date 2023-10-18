@@ -25,7 +25,7 @@ public class LibraryMethods {
         boolean success = false;
         try (Connection conn = DatabaseConnector.getConnection(); Statement stmt = conn.createStatement()) {
             // Create the table if it doesn't exist
-            String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(10) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(50) NOT NULL, lastName VARCHAR(50) NOT NULL, email VARCHAR(50) NOT NULL, program VARCHAR(30), yearLvl VARCHAR(10))";
+            String createTableQuery = "CREATE TABLE IF NOT EXISTS users (id SERIAL PRIMARY KEY, status VARCHAR(10) NOT NULL, studentFacultyID VARCHAR(100) NOT NULL, role VARCHAR(10) NOT NULL, firstName VARCHAR(150) NOT NULL, lastName VARCHAR(150) NOT NULL, email VARCHAR(150) NOT NULL, program VARCHAR(130), yearLvl VARCHAR(10))";
             stmt.executeUpdate(createTableQuery);
 
             // Prepare the SELECT query with parameters

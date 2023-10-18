@@ -18,7 +18,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author araos
  */
-public class AdminDashboard extends javax.swing.JFrame {
+public class AdminDashboard1 extends javax.swing.JFrame {
 
     private String sfID;
     private int usersCount;
@@ -31,7 +31,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         this.sfID = sfID;
     }
 
-    public AdminDashboard(String fname, String sfID) {
+    public AdminDashboard1(String fname, String sfID) {
         this.sfID = sfID;
         initComponents();
         lblAdminsName.setText(fname);
@@ -218,19 +218,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         cardPanel = new javax.swing.JPanel();
         homePage = new javax.swing.JPanel();
-        panelBorder5 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        lblTotalNumberUsers = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        panelBorder6 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        lblNumberOfActive = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        chart1 = new CustomPieChart.Chart();
-        jLabel1 = new javax.swing.JLabel();
-        panelBorder10 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        btnReason = new javax.swing.JButton();
-        btnYearLevel = new javax.swing.JButton();
-        btnProgram = new javax.swing.JButton();
         panelBorder2 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblTopFiveLogs = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
@@ -239,24 +226,21 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         activeUserNow = new javax.swing.JTable();
+        panelBorder5 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        lblTotalNumberUsers = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        panelBorder6 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        lblNumberOfActive = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        panelBorder7 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        chart1 = new CustomPieChart.Chart();
         panelBorder4 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         lblAdminsName = new javax.swing.JLabel();
-        logsPage = new javax.swing.JPanel();
-        panelBorder9 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
-        comboProgram = new javax.swing.JComboBox<>();
-        logsPane = new javax.swing.JScrollPane();
-        logsTable = new javax.swing.JTable();
-        txtSearchLogs = new javax.swing.JTextField();
-        endDateChooser = new com.toedter.calendar.JDateChooser();
-        startDateChooser = new com.toedter.calendar.JDateChooser();
-        comboYrLvl = new javax.swing.JComboBox<>();
-        btnFilter = new javax.swing.JButton();
-        totalRecordCountValue = new javax.swing.JLabel();
-        lblStart = new javax.swing.JLabel();
-        lblEnd = new javax.swing.JLabel();
-        btnClear = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        btnRefresh = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        panelBorder10 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        btnReason = new javax.swing.JButton();
+        btnYearLevel = new javax.swing.JButton();
+        btnProgram = new javax.swing.JButton();
         accountPage = new javax.swing.JPanel();
         panelBorder8 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -280,20 +264,28 @@ public class AdminDashboard extends javax.swing.JFrame {
         adminPane = new javax.swing.JScrollPane();
         adminAccountTable = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
+        logsPage = new javax.swing.JPanel();
+        panelBorder9 = new com.mycompany.finallibrarysystem.Design.PanelBorder();
+        comboProgram = new javax.swing.JComboBox<>();
+        logsPane = new javax.swing.JScrollPane();
+        logsTable = new javax.swing.JTable();
+        txtSearchLogs = new javax.swing.JTextField();
+        endDateChooser = new com.toedter.calendar.JDateChooser();
+        startDateChooser = new com.toedter.calendar.JDateChooser();
+        comboYrLvl = new javax.swing.JComboBox<>();
+        btnFilter = new javax.swing.JButton();
+        totalRecordCountValue = new javax.swing.JLabel();
+        lblStart = new javax.swing.JLabel();
+        lblEnd = new javax.swing.JLabel();
+        btnClear = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        btnRefresh = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(2000, 1300));
-        setSize(new java.awt.Dimension(2000, 1300));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setSize(new java.awt.Dimension(1200, 700));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1100, 700));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelBorder1.setBackground(new java.awt.Color(128, 0, 0));
@@ -319,7 +311,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelHome.add(lblDashboard);
 
         panelBorder1.add(panelHome);
-        panelHome.setBounds(60, 290, 190, 70);
+        panelHome.setBounds(10, 220, 190, 70);
 
         panelAccounts.setBackground(new java.awt.Color(128, 0, 0));
         panelAccounts.setLayout(new java.awt.GridLayout(1, 0));
@@ -342,7 +334,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelAccounts.add(lblAccounts);
 
         panelBorder1.add(panelAccounts);
-        panelAccounts.setBounds(60, 390, 190, 70);
+        panelAccounts.setBounds(10, 310, 190, 70);
 
         panelLogs.setBackground(new java.awt.Color(128, 0, 0));
         panelLogs.setLayout(new java.awt.GridLayout(1, 0));
@@ -365,7 +357,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelLogs.add(lblAllLogs);
 
         panelBorder1.add(panelLogs);
-        panelLogs.setBounds(60, 490, 190, 70);
+        panelLogs.setBounds(10, 410, 190, 70);
 
         panelLogout.setBackground(new java.awt.Color(128, 0, 0));
         panelLogout.setLayout(new java.awt.GridLayout(1, 0));
@@ -388,97 +380,20 @@ public class AdminDashboard extends javax.swing.JFrame {
         panelLogout.add(lblLogout);
 
         panelBorder1.add(panelLogout);
-        panelLogout.setBounds(60, 910, 190, 70);
+        panelLogout.setBounds(10, 560, 190, 70);
 
         lblLogo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/PUPLogo_icon.png"))); // NOI18N
         panelBorder1.add(lblLogo);
-        lblLogo.setBounds(50, 40, 210, 180);
+        lblLogo.setBounds(0, 20, 210, 180);
 
-        jPanel1.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 320, 1020));
+        jPanel1.add(panelBorder1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 210, 650));
 
-        cardPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        cardPanel.setPreferredSize(new java.awt.Dimension(0, 0));
         cardPanel.setLayout(new java.awt.CardLayout());
 
         homePage.setBackground(new java.awt.Color(255, 255, 255));
-        homePage.setMinimumSize(new java.awt.Dimension(0, 0));
-        homePage.setPreferredSize(new java.awt.Dimension(1100, 670));
+        homePage.setPreferredSize(new java.awt.Dimension(1000, 670));
         homePage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
-
-        lblTotalNumberUsers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        lblTotalNumberUsers.setForeground(new java.awt.Color(255, 255, 255));
-        lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTotalNumberUsers.setText("0");
-        panelBorder5.add(lblTotalNumberUsers);
-        lblTotalNumberUsers.setBounds(110, 0, 110, 100);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardActiveUser.png"))); // NOI18N
-        panelBorder5.add(jLabel2);
-        jLabel2.setBounds(30, 0, 100, 100);
-
-        homePage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 229, 100));
-
-        panelBorder6.setBackground(new java.awt.Color(128, 0, 0));
-
-        lblNumberOfActive.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
-        lblNumberOfActive.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNumberOfActive.setText("0");
-        panelBorder6.add(lblNumberOfActive);
-        lblNumberOfActive.setBounds(110, 0, 110, 100);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardRegisteredUserIcon.png"))); // NOI18N
-        panelBorder6.add(jLabel4);
-        jLabel4.setBounds(30, 0, 70, 100);
-
-        homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 235, 229, 100));
-
-        panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
-        panelBorder7.add(chart1);
-        chart1.setBounds(10, 4, 450, 310);
-
-        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 990, 680));
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
-        jLabel1.setText("DASHBOARD");
-        homePage.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
-
-        panelBorder10.setBackground(new java.awt.Color(128, 0, 0));
-
-        btnReason.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnReason.setText("REASON");
-        btnReason.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReasonActionPerformed(evt);
-            }
-        });
-        panelBorder10.add(btnReason);
-        btnReason.setBounds(500, 140, 200, 50);
-
-        btnYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnYearLevel.setText("YEAR LEVEL");
-        btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnYearLevelActionPerformed(evt);
-            }
-        });
-        panelBorder10.add(btnYearLevel);
-        btnYearLevel.setBounds(270, 140, 200, 50);
-
-        btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        btnProgram.setText("PROGRAM");
-        btnProgram.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProgramActionPerformed(evt);
-            }
-        });
-        panelBorder10.add(btnProgram);
-        btnProgram.setBounds(40, 140, 200, 50);
-
-        homePage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 730, 225));
 
         panelBorder2.setBackground(new java.awt.Color(128, 0, 0));
 
@@ -486,7 +401,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblTopFiveLogs.setForeground(new java.awt.Color(255, 255, 255));
         lblTopFiveLogs.setText("TOP 5 MOST LOGS");
         panelBorder2.add(lblTopFiveLogs);
-        lblTopFiveLogs.setBounds(30, 30, 250, 29);
+        lblTopFiveLogs.setBounds(10, 10, 250, 29);
 
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -524,9 +439,9 @@ public class AdminDashboard extends javax.swing.JFrame {
         scroll.setViewportView(mostLogsTable);
 
         panelBorder2.add(scroll);
-        scroll.setBounds(20, 80, 470, 180);
+        scroll.setBounds(10, 50, 430, 170);
 
-        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 130, 510, 280));
+        homePage.add(panelBorder2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 110, 450, 230));
 
         panelBorder3.setBackground(new java.awt.Color(128, 0, 0));
         panelBorder3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -534,7 +449,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ACTIVE NOW");
-        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 220, -1));
+        panelBorder3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, -1));
 
         activeUserNow.setFont(new java.awt.Font("Bookman Old Style", 0, 14)); // NOI18N
         activeUserNow.setModel(new javax.swing.table.DefaultTableModel(
@@ -571,9 +486,45 @@ public class AdminDashboard extends javax.swing.JFrame {
             activeUserNow.getColumnModel().getColumn(2).setPreferredWidth(30);
         }
 
-        panelBorder3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 470, 520));
+        panelBorder3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 430, 250));
 
-        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 430, 510, 610));
+        homePage.add(panelBorder3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 450, 300));
+
+        panelBorder5.setBackground(new java.awt.Color(128, 0, 0));
+
+        lblTotalNumberUsers.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblTotalNumberUsers.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalNumberUsers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalNumberUsers.setText("0");
+        panelBorder5.add(lblTotalNumberUsers);
+        lblTotalNumberUsers.setBounds(110, 0, 110, 100);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardActiveUser.png"))); // NOI18N
+        panelBorder5.add(jLabel2);
+        jLabel2.setBounds(30, 0, 100, 100);
+
+        homePage.add(panelBorder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 229, 105));
+
+        panelBorder6.setBackground(new java.awt.Color(128, 0, 0));
+
+        lblNumberOfActive.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
+        lblNumberOfActive.setForeground(new java.awt.Color(255, 255, 255));
+        lblNumberOfActive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNumberOfActive.setText("0");
+        panelBorder6.add(lblNumberOfActive);
+        lblNumberOfActive.setBounds(110, 0, 110, 100);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dashboardRegisteredUserIcon.png"))); // NOI18N
+        panelBorder6.add(jLabel4);
+        jLabel4.setBounds(30, 0, 70, 100);
+
+        homePage.add(panelBorder6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 229, 105));
+
+        panelBorder7.setBackground(new java.awt.Color(128, 0, 0));
+        panelBorder7.add(chart1);
+        chart1.setBounds(10, 4, 450, 310);
+
+        homePage.add(panelBorder7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 470, 320));
 
         panelBorder4.setBackground(new java.awt.Color(128, 0, 0));
 
@@ -583,138 +534,49 @@ public class AdminDashboard extends javax.swing.JFrame {
         lblAdminsName.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/userdashboard_icon.png"))); // NOI18N
         lblAdminsName.setText("name");
         panelBorder4.add(lblAdminsName);
-        lblAdminsName.setBounds(190, 10, 240, 70);
+        lblAdminsName.setBounds(170, 10, 240, 70);
 
-        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 20, 510, 90));
+        homePage.add(panelBorder4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 420, 90));
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel1.setText("DASHBOARD");
+        homePage.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        panelBorder10.setBackground(new java.awt.Color(128, 0, 0));
+
+        btnReason.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnReason.setText("REASON");
+        btnReason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReasonActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnReason);
+        btnReason.setBounds(140, 60, 200, 30);
+
+        btnYearLevel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnYearLevel.setText("YEAR LEVEL");
+        btnYearLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnYearLevelActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnYearLevel);
+        btnYearLevel.setBounds(250, 10, 200, 30);
+
+        btnProgram.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnProgram.setText("PROGRAM");
+        btnProgram.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProgramActionPerformed(evt);
+            }
+        });
+        panelBorder10.add(btnProgram);
+        btnProgram.setBounds(20, 10, 200, 30);
+
+        homePage.add(panelBorder10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 223, 470, 98));
 
         cardPanel.add(homePage, "card2");
-
-        logsPage.setBackground(new java.awt.Color(255, 255, 255));
-        logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelBorder9.setBackground(new java.awt.Color(128, 0, 0));
-        panelBorder9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelBorder9MouseEntered(evt);
-            }
-        });
-
-        panelBorder9.add(comboProgram);
-        comboProgram.setBounds(30, 90, 180, 40);
-
-        logsTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        logsTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ROLE", "FULL NAME", "PROGRAM", "YEAR LEVEL", "REASON", "LOG IN TIME", "LOG OUT TIME"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        logsTable.setEnabled(false);
-        logsTable.setRowSelectionAllowed(false);
-        logsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        logsTable.setShowGrid(true);
-        logsPane.setViewportView(logsTable);
-        if (logsTable.getColumnModel().getColumnCount() > 0) {
-            logsTable.getColumnModel().getColumn(0).setResizable(false);
-            logsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
-            logsTable.getColumnModel().getColumn(1).setResizable(false);
-            logsTable.getColumnModel().getColumn(2).setResizable(false);
-            logsTable.getColumnModel().getColumn(3).setResizable(false);
-            logsTable.getColumnModel().getColumn(3).setPreferredWidth(30);
-            logsTable.getColumnModel().getColumn(4).setResizable(false);
-            logsTable.getColumnModel().getColumn(4).setPreferredWidth(40);
-            logsTable.getColumnModel().getColumn(5).setResizable(false);
-            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
-            logsTable.getColumnModel().getColumn(6).setResizable(false);
-            logsTable.getColumnModel().getColumn(6).setPreferredWidth(100);
-        }
-
-        panelBorder9.add(logsPane);
-        logsPane.setBounds(30, 160, 1460, 720);
-
-        txtSearchLogs.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        txtSearchLogs.setText("Search");
-        txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSearchLogsKeyReleased(evt);
-            }
-        });
-        panelBorder9.add(txtSearchLogs);
-        txtSearchLogs.setBounds(1130, 30, 360, 40);
-        panelBorder9.add(endDateChooser);
-        endDateChooser.setBounds(740, 90, 180, 40);
-        panelBorder9.add(startDateChooser);
-        startDateChooser.setBounds(520, 90, 190, 40);
-
-        panelBorder9.add(comboYrLvl);
-        comboYrLvl.setBounds(240, 90, 180, 40);
-
-        btnFilter.setText("FILTER");
-        btnFilter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFilterActionPerformed(evt);
-            }
-        });
-        panelBorder9.add(btnFilter);
-        btnFilter.setBounds(1130, 90, 160, 40);
-
-        totalRecordCountValue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        totalRecordCountValue.setForeground(new java.awt.Color(255, 255, 255));
-        totalRecordCountValue.setText("jLabel7");
-        panelBorder9.add(totalRecordCountValue);
-        totalRecordCountValue.setBounds(670, 890, 270, 25);
-
-        lblStart.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblStart.setForeground(new java.awt.Color(255, 255, 255));
-        lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStart.setText("START DATE");
-        panelBorder9.add(lblStart);
-        lblStart.setBounds(520, 51, 190, 30);
-
-        lblEnd.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        lblEnd.setForeground(new java.awt.Color(255, 255, 255));
-        lblEnd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEnd.setText("END DATE");
-        panelBorder9.add(lblEnd);
-        lblEnd.setBounds(740, 51, 180, 30);
-
-        btnClear.setText("CLEAR");
-        btnClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearActionPerformed(evt);
-            }
-        });
-        panelBorder9.add(btnClear);
-        btnClear.setBounds(1320, 90, 170, 40);
-
-        logsPage.add(panelBorder9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1520, 940));
-
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
-        jLabel5.setText("LOGS");
-        logsPage.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 40));
-
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
-        btnRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRefreshMouseClicked(evt);
-            }
-        });
-        logsPage.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(1480, 40, 40, 40));
-
-        cardPanel.add(logsPage, "card4");
 
         accountPage.setBackground(new java.awt.Color(255, 255, 255));
         accountPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -742,7 +604,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtStudentSearchAcctKeyReleased(evt);
             }
         });
-        jPanel2.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 40, 390, 40));
+        jPanel2.add(txtStudentSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 390, 40));
 
         btnAddStudentAcct.setBackground(new java.awt.Color(204, 255, 204));
         btnAddStudentAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -753,7 +615,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnAddStudentAcctActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAddStudentAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 200, 40));
+        jPanel2.add(btnAddStudentAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, -1, -1));
 
         btnDeleteStuAcct.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteStuAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -765,7 +627,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnDeleteStuAcctActionPerformed(evt);
             }
         });
-        jPanel2.add(btnDeleteStuAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 180, 40));
+        jPanel2.add(btnDeleteStuAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
 
         btnUpdateStudentAccount.setBackground(new java.awt.Color(51, 102, 255));
         btnUpdateStudentAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -777,7 +639,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnUpdateStudentAccountActionPerformed(evt);
             }
         });
-        jPanel2.add(btnUpdateStudentAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, 40));
+        jPanel2.add(btnUpdateStudentAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         studentAcctTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         studentAcctTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -845,7 +707,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         studentAcctPane.setViewportView(studentAcctTable);
 
-        jPanel2.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1460, 740));
+        jPanel2.add(studentAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 390));
 
         jTabbedPane1.addTab("STUDENT", jPanel2);
 
@@ -864,7 +726,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtFacultySearchAcctKeyReleased(evt);
             }
         });
-        jPanel4.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 40, 390, 40));
+        jPanel4.add(txtFacultySearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 390, 40));
 
         btnAddFacultyAccount.setBackground(new java.awt.Color(204, 255, 204));
         btnAddFacultyAccount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -875,7 +737,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnAddFacultyAccountActionPerformed(evt);
             }
         });
-        jPanel4.add(btnAddFacultyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 200, 40));
+        jPanel4.add(btnAddFacultyAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, -1));
 
         btnDeleteFacultyAcct.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -887,7 +749,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnDeleteFacultyAcctActionPerformed(evt);
             }
         });
-        jPanel4.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 180, 40));
+        jPanel4.add(btnDeleteFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
         btnUpdateFacultyAcct.setBackground(new java.awt.Color(51, 102, 255));
         btnUpdateFacultyAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -899,7 +761,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnUpdateFacultyAcctActionPerformed(evt);
             }
         });
-        jPanel4.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, 40));
+        jPanel4.add(btnUpdateFacultyAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         facultyAcctTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         facultyAcctTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -921,7 +783,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         facultyAcctPane.setViewportView(facultyAcctTable);
 
-        jPanel4.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1460, 740));
+        jPanel4.add(facultyAcctPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 400));
 
         jTabbedPane1.addTab("FACULTY", jPanel4);
 
@@ -939,7 +801,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnUpdateAdminAcctActionPerformed(evt);
             }
         });
-        jPanel3.add(btnUpdateAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 170, 40));
+        jPanel3.add(btnUpdateAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         txtAdminSearchAcct.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         txtAdminSearchAcct.setText("Search");
@@ -953,7 +815,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 txtAdminSearchAcctKeyReleased(evt);
             }
         });
-        jPanel3.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 40, 390, 40));
+        jPanel3.add(txtAdminSearchAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 10, 390, 40));
 
         btnDeleteAdminAcct.setBackground(new java.awt.Color(255, 51, 51));
         btnDeleteAdminAcct.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -965,7 +827,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                 btnDeleteAdminAcctActionPerformed(evt);
             }
         });
-        jPanel3.add(btnDeleteAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 180, 40));
+        jPanel3.add(btnDeleteAdminAcct, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, -1, -1));
 
         adminAccountTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         adminAccountTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -994,24 +856,162 @@ public class AdminDashboard extends javax.swing.JFrame {
         });
         adminPane.setViewportView(adminAccountTable);
 
-        jPanel3.add(adminPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 1460, 740));
+        jPanel3.add(adminPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 910, 380));
 
         jTabbedPane1.addTab("ADMIN", jPanel3);
 
         panelBorder8.add(jTabbedPane1);
-        jTabbedPane1.setBounds(0, 10, 1520, 920);
+        jTabbedPane1.setBounds(0, 0, 940, 550);
 
-        accountPage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 1520, 940));
+        accountPage.add(panelBorder8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 940, 550));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
         jLabel6.setText("ACCOUNTS");
-        accountPage.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 340, 50));
+        accountPage.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 340, 50));
 
         cardPanel.add(accountPage, "card3");
 
-        jPanel1.add(cardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, 1560, 1060));
+        logsPage.setBackground(new java.awt.Color(255, 255, 255));
+        logsPage.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1060));
+        panelBorder9.setBackground(new java.awt.Color(128, 0, 0));
+        panelBorder9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelBorder9MouseEntered(evt);
+            }
+        });
+
+        panelBorder9.add(comboProgram);
+        comboProgram.setBounds(30, 72, 110, 30);
+
+        logsTable.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        logsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ROLE", "FULL NAME", "PROGRAM", "YEAR LEVEL", "REASON", "LOG IN TIME", "LOG OUT TIME"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        logsTable.setEnabled(false);
+        logsTable.setRowSelectionAllowed(false);
+        logsTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        logsTable.setShowGrid(true);
+        logsPane.setViewportView(logsTable);
+        if (logsTable.getColumnModel().getColumnCount() > 0) {
+            logsTable.getColumnModel().getColumn(0).setResizable(false);
+            logsTable.getColumnModel().getColumn(0).setPreferredWidth(20);
+            logsTable.getColumnModel().getColumn(1).setResizable(false);
+            logsTable.getColumnModel().getColumn(2).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setResizable(false);
+            logsTable.getColumnModel().getColumn(3).setPreferredWidth(30);
+            logsTable.getColumnModel().getColumn(4).setResizable(false);
+            logsTable.getColumnModel().getColumn(4).setPreferredWidth(40);
+            logsTable.getColumnModel().getColumn(5).setResizable(false);
+            logsTable.getColumnModel().getColumn(5).setPreferredWidth(100);
+            logsTable.getColumnModel().getColumn(6).setResizable(false);
+            logsTable.getColumnModel().getColumn(6).setPreferredWidth(100);
+        }
+
+        panelBorder9.add(logsPane);
+        logsPane.setBounds(10, 130, 930, 400);
+
+        txtSearchLogs.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtSearchLogs.setText("Search");
+        txtSearchLogs.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchLogsKeyReleased(evt);
+            }
+        });
+        panelBorder9.add(txtSearchLogs);
+        txtSearchLogs.setBounds(650, 10, 290, 30);
+        panelBorder9.add(endDateChooser);
+        endDateChooser.setBounds(500, 70, 150, 30);
+        panelBorder9.add(startDateChooser);
+        startDateChooser.setBounds(320, 70, 150, 30);
+
+        panelBorder9.add(comboYrLvl);
+        comboYrLvl.setBounds(160, 72, 110, 30);
+
+        btnFilter.setText("FILTER");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
+        panelBorder9.add(btnFilter);
+        btnFilter.setBounds(690, 70, 90, 23);
+
+        totalRecordCountValue.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        totalRecordCountValue.setForeground(new java.awt.Color(255, 255, 255));
+        totalRecordCountValue.setText("jLabel7");
+        panelBorder9.add(totalRecordCountValue);
+        totalRecordCountValue.setBounds(670, 540, 270, 25);
+
+        lblStart.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblStart.setForeground(new java.awt.Color(255, 255, 255));
+        lblStart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStart.setText("START DATE");
+        panelBorder9.add(lblStart);
+        lblStart.setBounds(320, 50, 150, 21);
+
+        lblEnd.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        lblEnd.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEnd.setText("END DATE");
+        panelBorder9.add(lblEnd);
+        lblEnd.setBounds(497, 50, 150, 21);
+
+        btnClear.setText("CLEAR");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
+        panelBorder9.add(btnClear);
+        btnClear.setBounds(810, 70, 90, 23);
+
+        logsPage.add(panelBorder9, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 79, 950, 580));
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 48)); // NOI18N
+        jLabel5.setText("LOGS");
+        logsPage.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 40));
+
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/refresh.png"))); // NOI18N
+        btnRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRefreshMouseClicked(evt);
+            }
+        });
+        logsPage.add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, 40, 40));
+
+        cardPanel.add(logsPage, "card4");
+
+        jPanel1.add(cardPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 1050, 670));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1187, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -1473,11 +1473,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         displayFacultyAccount();
         displayAdminAccount();
     }//GEN-LAST:event_btnRefreshMouseClicked
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        setExtendedState(MainFrame.MAXIMIZED_BOTH);
-    }//GEN-LAST:event_formWindowOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

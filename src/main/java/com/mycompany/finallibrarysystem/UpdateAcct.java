@@ -47,7 +47,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         comboYrLvl.setSelectedItem(yearLevel);
     }
 
-    public void setFacultyData(int id, String stuFaculID, String department, String email, String firstName, String lastName) {
+    public void setFacultyData(int id, String stuFaculID, String email, String firstName, String lastName) {
         this.id = id;
         this.stuFaculID = stuFaculID;
         this.email = email;
@@ -141,7 +141,8 @@ public class UpdateAcct extends javax.swing.JDialog {
         txtEmail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "EMAIL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Update your account");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Update Account");
 
         txtFirstName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtFirstName.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)), "FIRST NAME", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM));
@@ -182,14 +183,14 @@ public class UpdateAcct extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(106, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(50, 50, 50)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,12 +219,13 @@ public class UpdateAcct extends javax.swing.JDialog {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(389, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(10, 10, 10)
+                    .addGap(0, 84, Short.MAX_VALUE)
                     .addComponent(txtStudentFacultyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(20, 20, 20)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +248,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                         .addComponent(saveChanges))
                     .addGap(17, 17, 17)
                     .addComponent(lblWarningMsg)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 460));
@@ -263,6 +265,7 @@ public class UpdateAcct extends javax.swing.JDialog {
         status = "ACTIVE";
         role = null;
         studentFacultyID = txtStudentFacultyID.getText();
+        System.out.println(studentFacultyID + "UA");
         firstName = txtFirstName.getText();
         lastName = txtLastName.getText();
         email = txtEmail.getText();
@@ -292,7 +295,7 @@ public class UpdateAcct extends javax.swing.JDialog {
                     lblWarningMsg.setText("Please specify your program/year level.");
                 } else {
                     role = rbtnStudent.getText();
-                    String msg = AccountDAO.updateAccount(id, role, stuFaculID, firstName, lastName, email, program, yearLevel);
+                    String msg = AccountDAO.updateAccount(id, role, studentFacultyID, firstName, lastName, email, program, yearLevel);
                     lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/successfulmsg_icon.png")));
                     lblWarningMsg.setText(msg);
                 }

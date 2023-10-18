@@ -50,10 +50,14 @@ public class LoginPanel extends javax.swing.JPanel {
         lblDoYouHaveanAccount = new javax.swing.JLabel();
         lblStudentFacultyID = new javax.swing.JLabel();
         lblGIF = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(530, 600));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelGradient1.setBackground((new Color(0, 0, 0, 0)));
+        panelGradient1.setMinimumSize(new java.awt.Dimension(530, 600));
+        panelGradient1.setPreferredSize(new java.awt.Dimension(530, 600));
         panelGradient1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtStudentFacultyID.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
@@ -64,7 +68,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 txtStudentFacultyIDMouseClicked(evt);
             }
         });
-        panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 300, 50));
+        panelGradient1.add(txtStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 350, 50));
 
         comboBoxReason.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         comboBoxReason.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "REASON", "SLEEP", "REVIEW", "THESIS" }));
@@ -73,22 +77,23 @@ public class LoginPanel extends javax.swing.JPanel {
                 comboBoxReasonActionPerformed(evt);
             }
         });
-        panelGradient1.add(comboBoxReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 292, 300, 30));
+        panelGradient1.add(comboBoxReason, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 350, 40));
 
-        btnLogin.setBackground(new java.awt.Color(51, 51, 255));
+        btnLogin.setBackground(new java.awt.Color(136, 0, 0));
         btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("TIME IN | TIME OUT");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
             }
         });
-        panelGradient1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 320, -1));
+        panelGradient1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 417, 350, 40));
 
         lblWarningMsg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblWarningMsg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/warningmsg_icon.png"))); // NOI18N
         lblWarningMsg.setText("jLabel3");
-        panelGradient1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 350, -1));
+        panelGradient1.add(lblWarningMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 530, 350, -1));
 
         btnGoToSignUp.setBackground((new Color(0, 0, 0, 0)));
         btnGoToSignUp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -99,19 +104,20 @@ public class LoginPanel extends javax.swing.JPanel {
                 btnGoToSignUpActionPerformed(evt);
             }
         });
-        panelGradient1.add(btnGoToSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, 60, 20));
+        panelGradient1.add(btnGoToSignUp, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 60, 20));
 
         lblDoYouHaveanAccount.setText("Don't have an account?");
-        panelGradient1.add(lblDoYouHaveanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, -1, 20));
+        panelGradient1.add(lblDoYouHaveanAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, -1, 20));
 
         lblStudentFacultyID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStudentFacultyID.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/id_iconBig.png"))); // NOI18N
-        panelGradient1.add(lblStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
-
-        lblGIF.setIcon(new javax.swing.ImageIcon("C:\\Users\\araos\\Downloads\\ezgif.com-resize (1).gif")); // NOI18N
+        panelGradient1.add(lblStudentFacultyID, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
         panelGradient1.add(lblGIF, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, -1, 190));
 
-        add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 504));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/front.gif"))); // NOI18N
+        panelGradient1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+
+        add(panelGradient1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxReasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxReasonActionPerformed
@@ -144,7 +150,6 @@ public class LoginPanel extends javax.swing.JPanel {
                 if (status.equals("ACTIVE")) {
                     if (userRole.equals("ADMIN")) {
                         if (timeinTimeoutChecker) {
-                            System.out.print("CNNNN");
                             LibraryMethods.logUserLogin(sfID, fullName, null);
                         } else {
                             lblWarningMsg.setText("This Account is still online");
@@ -207,6 +212,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnGoToSignUp;
     private javax.swing.JButton btnLogin;
     private javax.swing.JComboBox<String> comboBoxReason;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDoYouHaveanAccount;
     private javax.swing.JLabel lblGIF;
     private javax.swing.JLabel lblStudentFacultyID;
